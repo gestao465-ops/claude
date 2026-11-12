@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wheff Studio</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+@font-face{font-family:"Editorial";src:url("fonts/editorial-regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Editorial";src:url("fonts/editorial-italic.otf") format("opentype");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Editorial";src:url("fonts/editorial-ultralight.otf") format("opentype");font-weight:200;font-style:normal;font-display:swap}
+@font-face{font-family:"Editorial";src:url("fonts/editorial-ultralight-italic.otf") format("opentype");font-weight:200;font-style:italic;font-display:swap}
+@font-face{font-family:"Recoleta";src:url("fonts/recoleta-light.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Recoleta";src:url("fonts/recoleta-medium.woff2") format("woff2");font-weight:500;font-display:swap}
+:root{--branco:#ffffff;--suave:#f2f2ef;--tinta:#141513;--tinta2:#6f726a;--tinta3:#a9aba4;--linha:#e3e3de;--lima:#eff12e;--g:"Recoleta",Georgia,serif;--t:"Editorial",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--branco)}
+body{color:var(--tinta);font-family:var(--g);overflow:hidden}
+a{color:inherit;text-decoration:none}
+/* a tela inteira é um quadro fixo de 1660×1040 (proporção da referência), ampliado ou reduzido por igual */
+.palco{position:fixed;inset:0;display:grid;place-items:center;background:var(--branco)}
+.tela{position:absolute;left:50%;top:50%;width:calc(1660px + var(--d,0px));height:1040px;transform:translate(-50%,-50%) scale(var(--k,1));transform-origin:50% 50%}
+.abs{position:absolute}
+
+.cl,.cm{translate:var(--s,0px) 0}
+.cr{translate:var(--s,0px) 0}
+.el{translate:var(--m,0px) 0}
+.dr{translate:calc(var(--d,0px) - var(--e,0px) - var(--m,0px)) 0}
+.foto,.faixa{margin-right:0}
+/* ---------- coluna esquerda ---------- */
+.logo{left:20px;top:34px;height:34px}
+.menu{left:calc(312px + var(--e,0px));top:22px;height:58px;padding:0 24px 0 7px;border-radius:999px;background:linear-gradient(135deg,#eff12e 0%,#eff12e 45%,#c8aa18 100%);color:var(--tinta);box-shadow:0 6px 16px rgba(239,241,46,.35);display:flex;align-items:center;gap:12px;font:500 21px var(--g)}
+.menu i{width:44px;height:44px;border-radius:50%;background:var(--tinta);display:grid;place-items:center}
+.menu i svg{width:24px;height:24px}
+.titulo{left:20px;top:104px;white-space:nowrap;font:200 calc(52px + var(--e,0px)*.07)/1.04 var(--t);letter-spacing:-.02em;letter-spacing:-.5px;text-transform:uppercase}
+.titulo em{font-style:italic}
+.titulo .real{background:var(--suave);border-radius:999px;padding:0 16px;margin-left:-4px}
+.titulo .bola{display:inline-flex;vertical-align:middle;margin-left:16px;position:relative;top:-6px}
+.titulo .bola span{width:52px;height:52px;border-radius:50%;border:2px solid var(--tinta);background:#fff}
+.titulo .bola span+span{margin-left:-26px;background:#eff12e url('img/w-circulo.webp') center/cover;border-color:#fff}
+.regua{left:20px;top:calc(430px + var(--e,0px)*.36);width:calc(470px + var(--e,0px));height:1px;background:var(--linha)}
+.bala{left:20px;top:calc(470px + var(--e,0px)*.36);width:calc(420px + var(--e,0px));font:300 calc(20px + var(--e,0px)*.025)/1.4 var(--g)}
+.bala::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--tinta);margin-right:12px;vertical-align:middle;position:relative;top:-2px}
+.bt{top:calc(570px + var(--e,0px)*.42);height:calc(64px + var(--e,0px)*.05);border-radius:999px;display:flex;align-items:center;justify-content:center;gap:12px;font:500 22px var(--g)}
+.bt svg{width:22px;height:22px}
+.bt1{left:20px;width:calc(182px + var(--e,0px)*.2);background:var(--tinta);color:#fff}
+.bt2{left:calc(224px + var(--e,0px)*.24);width:calc(184px + var(--e,0px)*.2);border:2px solid var(--tinta)}
+.pe-txt{left:20px;top:calc(844px - var(--e,0px)*.2);width:calc(290px + var(--e,0px)*.6);font:300 calc(21px + var(--e,0px)*.02)/1.3 var(--g)}
+.pe-img{left:20px;top:calc(912px - var(--e,0px)*.17);width:calc(266px + var(--e,0px)*.6);height:calc(118px + var(--e,0px)*.16);border-radius:16px;background:#000 url('img/telao.webp') center/cover no-repeat}
+.arcos{left:calc(302px + var(--e,0px)*.6);top:932px;display:flex;align-items:center}
+.arcos b{width:56px;height:56px;border-radius:50%;background:var(--tinta);color:#fff;display:grid;place-items:center;position:relative;z-index:1}
+.arcos b svg{width:22px;height:22px}
+.arcos i{width:28px;height:56px;border:2px solid var(--tinta);border-left:0;border-radius:0 56px 56px 0;margin-left:-14px}
+.arcos i+i{margin-left:-8px}
+
+/* ---------- foto central ---------- */
+.foto{left:calc(506px + var(--s,0px));top:20px;width:704px;height:910px;border-radius:40px;background:url('img/estacao.webp') center 58%/cover;overflow:hidden}
+.entalhe{left:704px;top:16px;width:292px;height:76px;background:#fff;border-radius:0 0 30px 30px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 12px 6px}
+.entalhe::before,.entalhe::after{content:"";position:absolute;top:0;width:30px;height:30px;background:radial-gradient(circle at 0 100%,transparent 29px,#fff 30px)}
+.entalhe::before{left:-29px;width:30px;background:radial-gradient(circle at 0 100%,transparent 29.5px,#fff 30px)}
+.entalhe::after{right:-29px;width:30px;background:radial-gradient(circle at 100% 100%,transparent 29.5px,#fff 30px)}
+.entalhe span{width:84px;height:42px;border-radius:999px;background:var(--suave) center/cover;border:0}
+.entalhe span.mais{display:grid;place-items:center;font:300 24px var(--g);background:var(--suave)}
+.ico{left:1148px;width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.ico svg{width:18px;height:18px}
+.alvo{width:44px;height:44px;border-radius:50%;background:var(--tinta);color:#fff;display:grid;place-items:center;box-shadow:0 0 0 3px rgba(255,255,255,.75)}
+.alvo svg{width:16px;height:16px}
+.tag{height:38px;padding:0 18px;border-radius:999px;background:#fff;display:flex;align-items:center;font:500 19px var(--g);white-space:nowrap}
+.vidro{background:rgba(255,255,255,.42);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.55);border-radius:18px;color:#fff}
+.card-zero{left:456px;top:466px;width:182px;height:112px;padding:12px 14px}
+.card-zero b{display:block;font:400 34px/1 var(--t);color:var(--tinta)}
+.card-zero p{font:300 14px/1.3 var(--g);margin-top:6px;color:var(--tinta)}
+.card-zero a{color:var(--tinta);border-color:var(--tinta2)!important;position:absolute;left:104px;bottom:10px;height:24px;width:66px;border:1.5px solid #fff;border-radius:999px;font:500 13px var(--g);display:flex;align-items:center;justify-content:space-between;padding:0 3px 0 12px}
+.card-zero a i{width:16px;height:16px;border-radius:50%;background:var(--tinta)}
+.card-pilulas{left:994px;top:676px;width:208px;height:194px;padding:14px 12px}
+.card-pilulas p{font:400 italic 21px/1.15 var(--t);margin:0 4px 12px}
+.card-pilulas a{height:34px;margin-top:8px;border-radius:999px;background:rgba(255,255,255,.88);color:var(--tinta);display:flex;align-items:center;justify-content:space-between;padding:0 4px 0 14px;font:500 16px var(--g)}
+.card-pilulas a i{width:26px;height:26px;border-radius:50%;background:rgba(160,150,130,.55);display:grid;place-items:center;color:#fff}
+.card-pilulas a i svg{width:12px;height:12px}
+.faixa{left:506px;top:948px;width:704px;height:68px;border:1.5px solid var(--linha);border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:0 30px 0 34px}
+.faixa .n{display:flex;align-items:center;font:400 34px/1 var(--t)}
+.faixa .n small{font:300 15px var(--g);color:var(--tinta3);margin-left:16px}
+.faixa img{height:34px}
+.faixa .d{font:300 15px/1 var(--g);color:var(--tinta3)}
+.faixa img{display:block}
+
+/* ---------- coluna direita ---------- */
+.busca{left:1366px;top:22px;width:calc(204px + var(--e,0px));translate:calc(var(--d,0px) - var(--e,0px) - var(--m,0px)) 0 !important;margin-left:0;height:58px;border-radius:999px;background:var(--suave);display:flex;align-items:center;gap:12px;padding:0 20px;font:300 18px var(--g);color:var(--tinta)}
+.busca svg{width:20px;height:20px;flex:none}
+.busca em{margin-left:auto;font-style:normal;color:var(--tinta);font-weight:500}
+.avatar{left:calc(1588px + var(--e,0px));top:22px;width:58px;height:58px;border-radius:50%;background:var(--lima) url('img/w.png') center/58% no-repeat}
+.linha{left:1252px;width:calc(388px + var(--e,0px));height:calc(44px + var(--e,0px)*.04);display:flex;align-items:center}
+.linha .p{height:calc(40px + var(--e,0px)*.04);font-size:calc(19px + var(--e,0px)*.02)!important;border-radius:999px;background:var(--suave);display:flex;align-items:center;gap:12px;padding:0 18px;font:500 19px var(--g)}
+.linha .p::before{content:"";width:10px;height:10px;border-radius:50%;background:#7a6553}
+.linha .e{margin-left:auto;margin-right:16px;font:300 18px var(--g);color:var(--tinta3)}
+.linha .m{width:36px;height:36px;border-radius:50%;background:var(--tinta);color:#fff;display:grid;place-items:center;font:300 24px/1 var(--g)}
+.txt-dir{left:1256px;top:176px;width:calc(200px + var(--e,0px)*.5);font:300 calc(18px + var(--e,0px)*.02)/1.35 var(--g);color:var(--tinta3)}
+.txt-dir+a{left:1256px;top:252px;font:500 19px var(--g)}
+.mini{left:calc(1490px + var(--e,0px)*.5);top:170px;width:calc(150px + var(--e,0px)*.5);height:calc(84px + var(--e,0px)*.2);border-radius:14px;background:#dad8d7 url('img/monitor-tela.webp') center/contain no-repeat}
+.est{left:1252px;top:420px;width:calc(388px + var(--e,0px));height:240px;border-radius:26px;background:var(--suave);padding:26px 26px 20px}
+.est h3{font:400 calc(24px + var(--e,0px)*.03) var(--t);display:flex;justify-content:space-between;align-items:center}
+.est h3 img{height:22px}
+.barras{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;height:118px;margin-top:22px}
+.barras div{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:10px}
+.barras i{width:18px;border-radius:999px;background:linear-gradient(180deg,#3a3e39 0%,rgba(58,62,57,.55) 55%,rgba(58,62,57,.05) 100%)}
+.barras b{font:300 17px var(--g)}
+.roda{left:calc(1250px + var(--e,0px));top:calc(740px + var(--e,0px)*.03);width:400px;height:300px}
+.roda ul{position:absolute;right:268px;top:16px;list-style:none;text-align:right;font:300 22px/1.25 var(--g)}
+.roda li:nth-child(1){position:absolute;right:-10px;top:39px;white-space:nowrap}
+.roda li:nth-child(2){position:absolute;right:16px;top:105px;white-space:nowrap}
+.roda li:nth-child(3){position:absolute;right:-10px;top:184px;white-space:nowrap}
+.roda .anel{position:absolute;left:150px;top:24px;width:248px;height:248px;border-radius:50%;border:1.5px solid var(--linha);border-left-color:var(--tinta2);transform:rotate(18deg)}
+.roda .anel i{position:absolute;left:calc(50% - 6px);top:calc(50% - 6px);width:12px;height:12px;border-radius:50%;background:var(--tinta)}
+.roda .disco{position:absolute;left:184px;top:58px;width:180px;height:180px;border-radius:50%;background:url('img/cartao-flores.webp') center/cover}
+.proxima{position:fixed;right:22px;bottom:22px;z-index:65;width:42px;height:42px;border-radius:50%;background:var(--tinta);color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px -12px rgba(0,0,0,.5);transition:transform .2s}
+.proxima:hover{transform:translateX(4px)}
+.proxima svg{width:18px;height:18px}
+
+
+/* ===== padrão da plataforma Wheff (core/design.js, tema claro): raios 8/10/12 e pílula, bordas #e5e5e5,
+   texto #3a3e39, fundo #f6f8f4, sombra suave, destaque lima → dourado, bordas vivas em degradê ===== */
+:root{--p-bg:#f6f8f4;--p-card:#ffffff;--p-borda:#e5e5e5;--p-borda2:#d4d4d4;--p-capsula-borda:#dfe2da;--p-txt1:#3a3e39;--p-txt2:#4f544d;--p-txt3:#676d64;
+  --p-r:8px;--p-rl:10px;--p-rxl:12px;--p-sombra:0 1px 2px #e0e0e0,0 12px 26px #e4e4e4;--p-sombra-alta:0 2px 4px #d6d6d6,0 24px 44px #d6d6d6;--p-preto:#0a0a07}
+.p-cartao{background:var(--p-card)!important;border:1px solid var(--p-borda)!important;box-shadow:var(--p-sombra)!important}
+html,body,.palco{background:var(--p-bg)!important}
+.bala,.txt-dir,.pe-txt,.faixa .d,.linha .e,.card-zero p,.roda ul{color:var(--p-txt2)!important}
+.titulo,.est h3,.card-zero b,.faixa .n{color:var(--p-preto)}
+.foto{border-radius:var(--p-rxl)!important}
+.entalhe{border-radius:0 0 var(--p-rxl) var(--p-rxl)!important}
+.card-zero,.card-pilulas{border-radius:var(--p-rxl)!important}
+.est{border-radius:var(--p-rxl)!important;background:var(--p-card)!important;border:1px solid var(--p-borda);box-shadow:var(--p-sombra)}
+.mini,.pe-img{border-radius:var(--p-rl)!important;border:1px solid var(--p-borda)}
+.busca{background:var(--p-card)!important;border:1px solid var(--p-capsula-borda);box-shadow:var(--p-sombra)}
+.linha .p{background:var(--p-card)!important;border:1px solid var(--p-capsula-borda);color:var(--p-txt1)}
+.faixa{background:var(--p-card);border-color:var(--p-borda)!important;box-shadow:var(--p-sombra)}
+.bt1,.linha .m,.alvo,.arcos b{background:var(--p-preto)!important}
+.bt2{border-color:var(--p-borda2)!important;background:var(--p-card)}
+.tag{border:1px solid var(--p-capsula-borda)}
+/* ===== celular: os blocos se empilham numa coluna, com o mesmo estilo ===== */
+body.mob,html:has(body.mob){height:auto!important;overflow:auto!important}
+body.mob .palco{position:static!important}
+body.mob .tela{position:static!important;transform:none!important;width:auto!important;height:auto!important;display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding:22px 16px 96px}
+body.mob .tela>.abs{position:relative!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;translate:none!important;margin:0!important;width:100%!important;flex:1 1 100%;order:50}
+body.mob .tela .foto,body.mob .tela .card-zero,body.mob .tela .card-pilulas,body.mob .tela .est,body.mob .tela .mini,body.mob .tela .pe-img{border-radius:12px!important}
+body.mob .tela .faixa{border-radius:14px!important}
+body.mob .tela .logo{order:1;flex:0 0 auto;width:auto!important;height:28px}
+body.mob .tela .menu{order:2;flex:0 0 auto;width:auto!important;margin-left:auto!important;height:46px;font-size:17px}
+body.mob .tela .menu i{width:34px;height:34px}
+body.mob .tela .titulo{order:3;white-space:normal!important;font-size:clamp(34px,10.8vw,64px)!important;line-height:1.02}
+body.mob .tela .titulo .real{white-space:nowrap}
+body.mob .tela .titulo .tx,body.mob .tela .titulo em,body.mob .tela .titulo .real{position:static!important;left:auto!important;top:auto!important}
+body.mob .tela .titulo .bola{position:absolute!important;right:0;bottom:.12em;top:auto!important;margin:0!important}
+@media (max-width:370px){body.mob .tela .roda{transform:scale(.62)!important;margin-bottom:-114px!important}}
+body.mob .tela .titulo .bola span{width:40px;height:40px}
+body.mob .tela .regua{order:4}
+body.mob .tela .bala{order:5;font-size:17px!important}
+body.mob .tela .bt{order:6;flex:0 0 auto;width:auto!important;height:48px!important;padding:0 18px;font-size:15px}
+body.mob .tela .foto{order:7;height:58vh!important;border-radius:24px}
+body.mob .tela .card-zero{order:8;flex:1 1 40%;width:auto!important;height:auto!important;padding:16px;border-radius:16px;background:#f2f2ef}
+body.mob .tela .card-zero a{position:static;margin-top:10px}
+body.mob .tela .card-pilulas{order:8;flex:1 1 50%;width:auto!important;height:auto!important;background:#3a3e39;border-radius:16px}
+body.mob .tela .faixa{order:9;height:auto!important;padding:14px 20px!important;flex-wrap:wrap;gap:8px;border-radius:20px}
+body.mob .tela .faixa .d{flex:1 1 100%;font-size:14px}
+body.mob .tela .faixa img{height:28px;width:auto}
+body.mob .tela .busca{order:10;width:100%!important}
+body.mob .tela .linha{order:11;width:100%!important;height:auto!important}
+body.mob .tela .linha .p{font-size:16px!important}
+body.mob .tela .txt-dir{order:12;font-size:16px!important}
+body.mob .tela .txt-dir+a{order:13}
+body.mob .tela .mini{order:14;height:auto!important;aspect-ratio:2/1}
+body.mob .tela .est{order:15;height:auto!important}
+body.mob .tela .roda{order:16;transform:scale(.72)!important;transform-origin:50% 0!important;width:400px!important;height:300px!important;flex:0 0 400px;margin:0 calc((100% - 400px) / 2 - 14px) -84px calc((100% - 400px) / 2 + 14px)!important}
+body.mob .tela .pe-txt{order:17;font-size:17px!important}
+body.mob .tela .pe-img{order:18;height:auto!important;aspect-ratio:3/1}
+body.mob .tela .alvo,body.mob .tela .tag,body.mob .tela .ico,body.mob .tela .entalhe,body.mob .tela .avatar,body.mob .tela .arcos{display:none!important}
+body.mob .proxima{bottom:16px;right:16px}
+/* modo de edição (só para quem pode editar) */
+.ed-bar{position:fixed;left:18px;bottom:18px;z-index:70;display:flex;gap:8px;align-items:center;font-family:var(--g)}
+.ed-bar[hidden]{display:none}
+.ed-bar button{height:44px;padding:0 20px;border-radius:999px;border:0;background:var(--tinta);color:#fff;font:500 15px var(--g);cursor:pointer;box-shadow:0 10px 30px -12px rgba(0,0,0,.5)}
+.ed-bar button[hidden]{display:none}
+.ed-bar button.sec{background:#fff;color:var(--tinta);box-shadow:0 0 0 1px var(--linha),0 10px 30px -12px rgba(0,0,0,.3)}
+.ed-bar span{font:300 13px var(--g);color:var(--tinta2);background:#fff;padding:6px 10px;border-radius:999px}
+.ed-bar span:empty{display:none}
+body.editando .tela .abs,body.editando .tela .tx,body.editando .tela .abs *{cursor:move;user-select:none;-webkit-user-select:none}
+body.editando .tela [contenteditable]{user-select:text;-webkit-user-select:text}
+body.editando .tela{touch-action:none}
+body.editando .tela .abs:hover{outline:1px dashed rgba(20,21,19,.35);outline-offset:3px}
+body.editando .tela .ed-sel{outline:2px solid var(--lima)!important;outline-offset:3px}
+body.editando [contenteditable]{cursor:text}
+body.editando [contenteditable]:focus{outline:2px dashed var(--tinta);outline-offset:2px}
+.ed-ferr{position:fixed;z-index:80;display:flex;gap:4px;padding:5px;border-radius:14px;background:var(--tinta);box-shadow:0 12px 30px -10px rgba(0,0,0,.5);font-family:var(--g)}
+.ed-ferr[hidden]{display:none}
+.ed-ferr button{min-width:34px;height:34px;padding:0 9px;border:0;border-radius:9px;background:rgba(255,255,255,.1);color:#fff;font:500 13px var(--g);cursor:pointer;white-space:nowrap}
+.ed-ferr button[hidden]{display:none}
+.ed-ferr button:hover{background:rgba(255,255,255,.22)}
+.ed-ferr .mover{cursor:grab;touch-action:none}
+/* passagem de página: a nova sobe de baixo e cobre a anterior */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:none;z-index:0}
+::view-transition-new(root){animation:sobe .9s cubic-bezier(.77,0,.18,1) both;z-index:1;box-shadow:0 -30px 80px -20px rgba(0,0,0,.25)}
+@keyframes sobe{from{transform:translateY(100%)}to{transform:translateY(0)}}
+</style>
+</head>
+<body>
+<main class="palco">
+<div class="tela" id="tela">
+
+  <!-- esquerda -->
+  <img class="abs el logo" src="img/wordmark.png" alt="Wheff">
+  <a class="abs el menu" href="#"><i><svg viewBox="0 0 24 24" fill="#eff12e"><circle cx="8" cy="8" r="3.3"/><circle cx="16" cy="8" r="3.3"/><circle cx="8" cy="16" r="3.3"/><circle cx="16" cy="16" r="3.3"/></svg></i>Início</a>
+  <h1 class="abs el titulo">Propósito<br><span class="real"><em>inesquecível,</em></span><br>resultados<span class="bola" aria-hidden="true"><span></span><span></span></span><br><em>inevitáveis.</em></h1>
+  <div class="abs el regua"></div>
+  <p class="abs el bala">Branding e lançamentos digitais em coprodução para criadoras que querem transformar influência em marca própria.</p>
+  <a class="abs el bt bt1" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>A parceria</a>
+  <a class="abs el bt bt2" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/></svg>Quem somos</a>
+  <p class="abs el pe-txt">Comece a construir a sua marca com a Wheff hoje</p>
+  <div class="abs el pe-img"></div>
+  <div class="abs el arcos"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></b><i></i><i></i></div>
+
+  <!-- centro -->
+  <div class="abs foto" role="img" aria-label="Outdoor Wheff numa estação"></div>
+  <div class="abs cm entalhe"><span style="background-image:url('img/camiseta-preta.webp')"></span><span style="background-image:url('img/sacola.webp')"></span><span class="mais">+</span></div>
+  <span class="abs cr ico" style="top:48px"><svg viewBox="0 0 24 24" fill="none" stroke="#141513" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></span>
+  <span class="abs cr ico" style="top:96px"><svg viewBox="0 0 24 24" fill="none" stroke="#141513" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z" fill="#141513"/></svg></span>
+
+  <span class="abs cl alvo" style="left:580px;top:154px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+  <span class="abs cl tag" style="left:610px;top:196px">Branding com essência</span>
+  <div class="abs cl vidro card-zero"><b>R$ 0</b><p>para começar a sua marca. Venha!</p><a href="#">Ver<i></i></a></div>
+  <span class="abs cr alvo" style="left:1086px;top:404px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+  <span class="abs cr tag" style="left:906px;top:446px">Lançamentos digitais</span>
+  <span class="abs cl alvo" style="left:580px;top:716px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+  <span class="abs cl tag" style="left:610px;top:756px">Coprodução sem risco</span>
+  <div class="abs cr vidro card-pilulas"><p>Comece a construir sua marca com a Wheff.</p>
+    <a href="#">Essência<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M7 17 17 7M9 7h8v8"/></svg></i></a>
+    <a href="#">Propósito<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M7 17 17 7M9 7h8v8"/></svg></i></a>
+    <a href="#">Legado<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M7 17 17 7M9 7h8v8"/></svg></i></a>
+  </div>
+  <div class="abs cl faixa"><span class="n">R$ 0<small>para começar</small></span><img src="img/w.png" alt=""><span class="d">Só crescemos quando a sua marca cresce.</span></div>
+
+  <!-- direita -->
+  <div class="abs dr busca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>Método<em>ESSENZIA</em></div>
+  <span class="abs dr avatar" role="img" aria-label="Wheff"></span>
+  <div class="abs dr linha" style="top:120px"><span class="p">Essência revelada</span><span class="e">etapa 1</span><span class="m">+</span></div>
+  <p class="abs dr txt-dir">Partimos de quem você é, não de fórmulas prontas.</p>
+  <a class="abs dr" href="#" style="left:1256px;top:252px;font:500 19px var(--g)">Ver propósito &#8599;</a>
+  <span class="abs dr mini"></span>
+  <div class="abs dr linha" style="top:302px"><span class="p">Story que conecta</span><span class="e">etapa 2</span><span class="m">+</span></div>
+  <div class="abs dr linha" style="top:352px"><span class="p">Narrativa de venda</span><span class="e">etapa 5</span><span class="m">+</span></div>
+  <div class="abs dr est"><h3>As 8 etapas do método<img src="img/w.png" alt=""></h3>
+    <div class="barras" aria-label="E S S E N Z I A">
+      <div><i style="height:34%"></i><b>E</b></div><div><i style="height:62%"></i><b>S</b></div><div><i style="height:46%"></i><b>S</b></div><div><i style="height:66%"></i><b>E</b></div>
+      <div><i style="height:70%"></i><b>N</b></div><div><i style="height:78%"></i><b>Z</b></div><div><i style="height:86%"></i><b>I</b></div><div><i style="height:92%"></i><b>A</b></div>
+    </div>
+  </div>
+  <div class="abs dr roda">
+    <ul><li>Uma marca cristã</li><li>Coprodução de<br>longo prazo</li><li>Feito como<br>para o Senhor</li></ul>
+    <span class="anel" aria-hidden="true"><i style="transform:rotate(22deg) translateX(-123px)"></i><i style="transform:rotate(-18deg) translateX(-123px)"></i><i style="transform:rotate(-58deg) translateX(-123px)"></i></span>
+    <span class="disco" role="img" aria-label="Camiseta Wheff"></span>
+  </div>
+</div>
+</main>
+<a class="proxima" href="pagina-2.html" aria-label="Próxima página"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<div class="ed-bar" id="ed-bar" hidden><span id="ed-msg"></span><button type="button" class="sec" id="ed-desfaz" hidden>Desfazer</button><button type="button" class="sec" id="ed-sai" hidden>Sair</button><button type="button" id="ed-bt">Editar página</button></div>
+<div class="ed-ferr" id="ed-ferr" hidden>
+  <button type="button" id="f-mover" title="Escrever neste texto">Escrever</button>
+  <button type="button" data-a="s-" title="Diminuir">A&minus;</button><button type="button" data-a="s+" title="Aumentar">A+</button>
+  <button type="button" data-a="l-" title="Linhas mais juntas">&#8597;&minus;</button><button type="button" data-a="l+" title="Linhas mais afastadas">&#8597;+</button>
+  <button type="button" id="f-foto" hidden>Trocar foto</button>
+  <button type="button" data-a="zero" title="Voltar ao original">&#8634;</button>
+</div>
+<input type="file" id="ed-arq" accept="image/*" hidden>
+<script type="application/json" id="textos">{"t":{"5":"Branding e lançamentos digitais em coprodução para influenciadora que quer transformar influência em marca própria com produtos e lançamentos digitais.","11":"Sem nenhum risco financeiro."},"a":{"2":{},"5":{"x":-5,"y":16},"6":{"x":-9,"y":16},"8":{"x":0,"y":-1},"11":{"x":10,"y":0},"25":{"x":-2,"y":-20},"28":{"x":-1,"y":-16},"30":{"x":0,"y":3},"32":{}},"f":{},"u":{"1":{"x":10,"y":11},"2":{"x":0,"y":6},"3":{"x":10,"y":27},"4":{"x":3,"y":20},"6":{"x":0,"y":-1},"11":{},"15":{},"24":{},"28":{"x":-1,"y":-3},"29":{"x":-4,"y":4},"30":{"x":-1,"y":1}}}</script>
+
+<script>
+  // ---- página editável: textos, posição, tamanho, espaçamento e fotos ----
+  const tela0=document.getElementById('tela');
+  const aceita={acceptNode:n=>n.nodeValue.trim()&&n.nodeValue.trim()!=='+'&&!n.parentElement.closest('.barras')?1:3};
+  const nosTexto=()=>{ const w=document.createTreeWalker(tela0,NodeFilter.SHOW_TEXT,aceita); const r=[]; let n; while(n=w.nextNode()) r.push(n); return r; };
+  // cada trecho de texto que divide o elemento com outros elementos vira um span próprio
+  nosTexto().forEach(n=>{ const p=n.parentElement; if([...p.children].some(c=>c.tagName!=='BR')){ const sp=document.createElement('span'); sp.className='tx'; p.insertBefore(sp,n); sp.appendChild(n); } });
+  const FONTE='<!doctype html>'+document.documentElement.outerHTML;
+  const unid=[...new Set(nosTexto().map(n=>n.parentElement))];
+  const blocos=[...tela0.querySelectorAll('.abs')];
+  const fotos=[...tela0.querySelectorAll('.foto,.pe-img,.mini,.disco,.avatar,.entalhe span:not(.mais),.bola span+span')];
+  const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const limpa=h=>{ const d=document.createElement('div'); d.innerHTML=h; return [...d.childNodes].map(n=>n.nodeName==='BR'?'<br>':esc(n.textContent)).join(''); };
+  let EST={}; try{ EST=JSON.parse(document.getElementById('textos').textContent)||{}; }catch(e){} if(Array.isArray(EST)) EST={};
+  EST.t=EST.t||{}; EST.a=EST.a||{}; EST.f=EST.f||{}; EST.u=EST.u||{};
+  const ORIG={t:unid.map(u=>u.innerHTML), f:fotos.map(f=>f.style.backgroundImage)};
+  function aplica(){
+    unid.forEach((u,i)=>{ u.innerHTML = EST.t[i]!=null ? limpa(EST.t[i]) : ORIG.t[i]; });
+    blocos.forEach((b,i)=>{ const a=EST.a[i]||{}; b.style.marginLeft=(a.x||0)+'px'; b.style.marginTop=(a.y||0)+'px'; b.style.scale=a.s&&a.s!==1?String(a.s):'';
+      const lh=a.l?String(a.l):''; [b,...b.querySelectorAll('*')].forEach(e=>{ e.style.lineHeight=lh; }); });
+    unid.forEach((u,i)=>{ if(u.classList.contains('abs')) return; const a=EST.u[i]||{}; u.style.position=(a.x||a.y)?'relative':''; u.style.left=(a.x||0)?a.x+'px':''; u.style.top=(a.y||0)?a.y+'px':'';
+      u.style.fontSize=''; u.style.lineHeight=a.l?String(a.l):''; if(a.s&&a.s!==1) u.style.fontSize=(parseFloat(getComputedStyle(u).fontSize)*a.s)+'px'; if(a.l&&!u.style.display) u.style.display=getComputedStyle(u).display==='inline'?'inline-block':''; });
+    fotos.forEach((f,i)=>{ const u=EST.f[i]; f.style.backgroundImage = u ? 'url("'+String(u).replace(/["\\()]/g,'')+'")' : ORIG.f[i]; });
+  }
+  aplica();
+
+  // mesma composição em qualquer tela: o quadro inteiro cresce ou encolhe por igual
+  const tela=document.getElementById('tela');
+  function ajusta(){ const mob=innerWidth<760; document.body.classList.toggle('mob',mob); if(mob) return; const k=Math.min(innerWidth/1700, innerHeight/1080); const d=Math.max(0, innerWidth/k-1700); const e=Math.min(d/2,260); tela.style.setProperty('--k',k); tela.style.setProperty('--d',d+'px'); tela.style.setProperty('--s',(d/2)+'px'); tela.style.setProperty('--e',e+'px'); tela.style.setProperty('--m',(d>0?24+(d/2-e)*.55:0)+'px'); encaixa(); }
+  // título: cresce até a largura da linha fina, sem passar da altura livre acima dela
+  function encaixa(){ const t=document.querySelector('.titulo'), r=document.querySelector('.regua');
+    t.style.fontSize=''; const f=parseFloat(getComputedStyle(t).fontSize);
+    const livreH=r.offsetTop-t.offsetTop-24;
+    const k=Math.min(r.offsetWidth/t.offsetWidth, livreH/t.offsetHeight);
+    t.style.fontSize=(f*k)+'px';
+    // círculo da direita: ocupa a largura do cartão de cima e a altura que sobra até o fim
+    const rd=document.querySelector('.roda'), es=document.querySelector('.est');
+    rd.style.transform=''; const topo=es.offsetTop+es.offsetHeight+24, livre=1040-topo-12;
+    const sc=Math.min(es.offsetWidth/400, livre/300);
+    rd.style.transformOrigin='100% 0'; rd.style.top=topo+'px'; rd.style.left=(es.offsetLeft+es.offsetWidth-400)+'px'; rd.style.transform='scale('+sc+')'; }
+  addEventListener('resize',ajusta); ajusta(); document.fonts.ready.then(ajusta);
+
+  // ---- modo de edição (como no Canva): clique seleciona, arraste move, duplo clique escreve ----
+  (async()=>{
+    const art=await window.claude?.use?.('artifact'); if(!art) return;
+    const assets=await window.claude?.use?.('assets');
+    const bar=document.getElementById('ed-bar'), bt=document.getElementById('ed-bt'), sai=document.getElementById('ed-sai'), desfaz=document.getElementById('ed-desfaz'), msg=document.getElementById('ed-msg');
+    const ferr=document.getElementById('ed-ferr'), btFoto=document.getElementById('f-foto'), arq=document.getElementById('ed-arq');
+    bar.hidden=false;
+    const SALVO=JSON.stringify(EST);
+    let editando=false, sel=null, mudou=false, escrevendo=null;
+    const marca=()=>{ mudou=true; msg.textContent='Alterações não salvas'; };
+    const ehTexto=b=>unid.includes(b);
+    const ajuste=b=>{ if(ehTexto(b)&&!b.classList.contains('abs')){ const i=unid.indexOf(b); return EST.u[i]=EST.u[i]||{}; } const i=blocos.indexOf(b); return EST.a[i]=EST.a[i]||{}; };
+    const apagaAjuste=b=>{ if(ehTexto(b)&&!b.classList.contains('abs')) delete EST.u[unid.indexOf(b)]; else delete EST.a[blocos.indexOf(b)]; };
+    const fotoDe=b=>fotos.find(f=>f===b||b.contains(f));
+    const alvoDe=t=>unid.find(x=>x===t||x.contains(t)) || t.closest('.tela .abs');
+    function posFerr(){ if(!sel){ ferr.hidden=true; return; } ferr.hidden=false; const r=sel.getBoundingClientRect(), fr=ferr.getBoundingClientRect();
+      let top=r.top-fr.height-10; if(top<8) top=r.bottom+10; ferr.style.top=Math.max(8,Math.min(top,innerHeight-fr.height-8))+'px'; ferr.style.left=Math.max(8,Math.min(r.left,innerWidth-fr.width-8))+'px'; }
+    function seleciona(b){ if(sel===b){ posFerr(); return; } paraDeEscrever(); if(sel) sel.classList.remove('ed-sel'); sel=b; if(b){ b.classList.add('ed-sel'); btFoto.hidden=!(assets && !ehTexto(b) && fotoDe(b)); } posFerr(); }
+    function lerTextos(){ unid.forEach((u,i)=>{ const h=limpa(u.innerHTML.replace(/\n/g,'<br>')); if(h!==limpa(ORIG.t[i])) EST.t[i]=h; else delete EST.t[i]; }); }
+    function escreve(u){ escrevendo=u; u.setAttribute('contenteditable','plaintext-only'); u.focus();
+      const r=document.createRange(); r.selectNodeContents(u); r.collapse(false); const s=getSelection(); s.removeAllRanges(); s.addRange(r); }
+    function paraDeEscrever(){ if(!escrevendo) return; escrevendo.removeAttribute('contenteditable'); escrevendo=null; lerTextos(); }
+    function liga(on){ editando=on; document.body.classList.toggle('editando',on); if(!on){ seleciona(null); }
+      sai.hidden=!on; desfaz.hidden=!on; bt.textContent=on?'Salvar':'Editar página';
+      if(on&&!mudou) msg.textContent='Arraste para mover · duplo clique para escrever'; }
+    unid.forEach(u=>{ u.addEventListener('input',()=>{ marca(); ajusta(); posFerr(); });
+      u.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); document.execCommand('insertLineBreak'); } if(e.key==='Escape') paraDeEscrever(); }); });
+    const T=document.getElementById('tela');
+    // arrastar: qualquer texto ou bloco, direto com o mouse ou o dedo
+    let ini=null;
+    T.addEventListener('pointerdown',e=>{ if(!editando) return; const b=alvoDe(e.target); if(!b){ seleciona(null); return; }
+      if(escrevendo && escrevendo===b) return;            // escrevendo: o mouse seleciona letras
+      e.preventDefault(); seleciona(b); const a=ajuste(b); ini={x:e.clientX,y:e.clientY,ax:a.x||0,ay:a.y||0,b,moveu:false}; },true);
+    addEventListener('pointermove',e=>{ if(!ini) return; const dx=e.clientX-ini.x, dy=e.clientY-ini.y; if(!ini.moveu && Math.hypot(dx,dy)<4) return;
+      ini.moveu=true; const k=parseFloat(tela.style.getPropertyValue('--k'))||1; const a=ajuste(ini.b); a.x=Math.round(ini.ax+dx/k); a.y=Math.round(ini.ay+dy/k); aplica(); posFerr(); marca(); });
+    addEventListener('pointerup',()=>{ ini=null; });
+    T.addEventListener('dblclick',e=>{ if(!editando) return; const u=unid.find(x=>x===e.target||x.contains(e.target)); if(u){ seleciona(u); escreve(u); } });
+    T.addEventListener('click',e=>{ if(editando && e.target.closest('a')) e.preventDefault(); },true);
+    document.addEventListener('pointerdown',e=>{ if(editando && !e.target.closest('.tela,.ed-ferr,.ed-bar')) seleciona(null); });
+    // setas do teclado movem o selecionado (Shift = passo maior)
+    addEventListener('keydown',e=>{ if(!editando||!sel||escrevendo) return; const p=e.shiftKey?10:1; const m={ArrowLeft:[-p,0],ArrowRight:[p,0],ArrowUp:[0,-p],ArrowDown:[0,p]}[e.key]; if(!m) return;
+      e.preventDefault(); const a=ajuste(sel); a.x=(a.x||0)+m[0]; a.y=(a.y||0)+m[1]; aplica(); posFerr(); marca(); });
+    // barrinha: escrever, tamanho, espaçamento, foto, original
+    document.getElementById('f-mover').onclick=()=>{ if(sel&&ehTexto(sel)) escreve(sel); };
+    ferr.addEventListener('click',e=>{ const ac=e.target.closest('[data-a]')?.dataset.a; if(!ac||!sel) return; lerTextos(); const a=ajuste(sel);
+      if(ac==='s+') a.s=+((a.s||1)+.05).toFixed(2); if(ac==='s-') a.s=Math.max(.3,+((a.s||1)-.05).toFixed(2));
+      if(ac==='l+'||ac==='l-'){ const cs=getComputedStyle(sel); const atual=a.l||(parseFloat(cs.lineHeight)/parseFloat(cs.fontSize))||1.2; a.l=Math.max(.7,+(atual+(ac==='l+'?.08:-.08)).toFixed(2)); }
+      if(ac==='zero'){ apagaAjuste(sel); const f=!ehTexto(sel)&&fotoDe(sel); if(f) delete EST.f[fotos.indexOf(f)]; }
+      aplica(); ajusta(); posFerr(); marca(); });
+    btFoto.onclick=()=>arq.click();
+    arq.onchange=async()=>{ const file=arq.files[0]; arq.value=''; if(!file||!sel) return; const f=fotoDe(sel); if(!f) return;
+      msg.textContent='Enviando foto…'; try{
+        // reduz a foto antes de enviar (lado maior até 1600 px, formato leve), para a página não ficar pesada
+        let envio=file; try{ const bmp=await createImageBitmap(file); const z=Math.min(1,1600/Math.max(bmp.width,bmp.height)); const c=document.createElement('canvas'); c.width=Math.round(bmp.width*z); c.height=Math.round(bmp.height*z); c.getContext('2d').drawImage(bmp,0,0,c.width,c.height); const b=await new Promise(r=>c.toBlob(r,'image/webp',.85)); if(b&&b.size<file.size) envio=b; }catch(_){}
+        const r=await assets.upload(envio); lerTextos(); EST.f[fotos.indexOf(f)]=r.url; aplica(); marca(); }catch(e){ msg.textContent='Não foi possível enviar a foto.'; } };
+    addEventListener('resize',posFerr);
+    const volta=()=>{ paraDeEscrever(); EST=JSON.parse(SALVO); EST.t=EST.t||{}; EST.a=EST.a||{}; EST.f=EST.f||{}; EST.u=EST.u||{}; aplica(); ajusta(); posFerr(); mudou=false; };
+    sai.onclick=()=>{ if(mudou && !confirm('Sair sem salvar? As alterações serão perdidas.')) return; volta(); msg.textContent=''; liga(false); };
+    desfaz.onclick=()=>{ volta(); msg.textContent='Voltou ao último salvo'; };
+    bt.onclick=async()=>{ if(!editando){ liga(true); return; }
+      paraDeEscrever(); lerTextos(); const dados=JSON.stringify(EST).replace(/</g,'\\u003c');
+      const html=FONTE.replace(/(<script type="application\/json" id="textos">)[\s\S]*?(<\/script>)/, (m,a,b)=>a+dados+b);
+      msg.textContent='Salvando…';
+      try{ await art.publish(html); msg.textContent='Salvo'; mudou=false; }
+      catch(e){ msg.textContent=e?.code==='conflict'?'Outra pessoa salvou antes; a página vai recarregar.':(e?.code==='not_writer'||e?.code==='not_granted')?'Você não tem permissão para salvar.':'Não foi possível salvar.'; }
+    };
+  })();
+</script>
+</body>
+</html>

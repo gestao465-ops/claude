@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wheff Studio · Quem somos</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+@font-face{font-family:"Editorial";src:url("fonts/editorial-regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Editorial";src:url("fonts/editorial-italic.otf") format("opentype");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Editorial";src:url("fonts/editorial-ultralight.otf") format("opentype");font-weight:200;font-style:normal;font-display:swap}
+@font-face{font-family:"Editorial";src:url("fonts/editorial-ultralight-italic.otf") format("opentype");font-weight:200;font-style:italic;font-display:swap}
+@font-face{font-family:"Recoleta";src:url("fonts/recoleta-light.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Recoleta";src:url("fonts/recoleta-medium.woff2") format("woff2");font-weight:500;font-display:swap}
+:root{--fundo:#efefec;--branco:#ffffff;--suave:#e6e6e2;--tinta:#141513;--tinta2:#6f726a;--tinta3:#a9aba4;--linha:#d9d9d4;--lima:#eff12e;--oliva:#696a00;--dourado:#c8aa18;--creme:#f2e7c7;--g:"Recoleta",Georgia,serif;--t:"Editorial",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--fundo)}
+body{color:var(--tinta);font-family:var(--g);overflow:hidden}
+a{color:inherit;text-decoration:none}
+.palco{position:fixed;inset:0;background:var(--fundo)}
+.tela{position:absolute;left:50%;top:50%;width:calc(1600px + var(--d,0px));height:1040px;transform:translate(-50%,-50%) scale(var(--k,1));transform-origin:50% 50%}
+.abs{position:absolute}
+.dr{translate:var(--d,0px) 0}
+.cm{translate:calc(var(--d,0px) / 2) 0}
+.up{text-transform:uppercase;letter-spacing:.01em}
+
+/* ---------- topo ---------- */
+.fio{left:48px;width:calc(1504px + var(--d,0px));height:1px;background:var(--linha)}
+.mini-txt{font:500 17px/1 var(--g);display:flex;align-items:center;gap:10px}
+.mini-txt svg{width:16px;height:16px}
+.ponto{display:inline-block;width:16px;height:16px;border-radius:50%}
+.logo-c{left:48px;top:116px;width:76px;height:76px;border-radius:50%;background:var(--tinta) url('img/w-lima.png') center/46% no-repeat}
+.duo{left:700px;top:132px;display:flex;align-items:center;gap:10px}
+.duo span{width:46px;height:46px;border-radius:50%;display:grid;place-items:center}
+.duo span:first-child{background:#fff;box-shadow:0 0 0 1px var(--linha)}
+.duo span:first-child i{width:20px;height:20px;border-radius:50%;background:var(--lima)}
+.duo span+span{background:var(--tinta)}
+.duo span+span i{width:20px;height:20px;border-radius:50%;background:#fff;opacity:.85}
+.duo-txt{left:812px;top:134px;font:500 19px/1.15 var(--g)}
+.cab-dir{left:1320px;top:104px;font:400 34px/1 var(--t)}
+
+/* ---------- esquerda ---------- */
+.card{left:164px;top:54px;width:246px;height:280px;border-radius:26px;background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.62));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 30px 60px -30px rgba(20,21,19,.35);padding:52px 20px 18px;z-index:3}
+.card h3{font:500 21px/1.12 var(--g)}
+.card .pil{display:inline-flex;margin-top:22px;height:30px;padding:0 18px;border:1.5px solid var(--tinta);border-radius:999px;align-items:center;font:500 14px var(--g)}
+.card .fotos{position:absolute;left:18px;right:18px;bottom:18px;display:flex;align-items:center}
+.card .fotos span{width:52px;height:52px;border-radius:50%;background:center/cover;border:3px solid rgba(255,255,255,.9)}
+.card .fotos span+span{margin-left:-14px}
+.card .fotos b{margin-left:auto;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.6);display:grid;place-items:center;font:500 12px var(--g);color:var(--tinta2)}
+.selo{left:150px;top:40px;width:42px;height:42px;border-radius:50%;background:var(--tinta);z-index:4;display:grid;place-items:center}
+.selo img{width:22px}
+.play{left:450px;top:60px;display:flex;align-items:center;gap:14px;font:500 19px/1.15 var(--g)}
+.play i{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--tinta);display:grid;place-items:center}
+.play i svg{width:10px;height:10px}
+.marca{left:450px;top:134px;font:500 22px var(--g)}
+.marca-sub{left:450px;top:172px;font:500 18px/1.15 var(--g)}
+.rostos{left:680px;top:152px;display:flex;gap:10px}
+.rostos span{width:48px;height:48px;border-radius:50%;background:center/cover}
+.rostos span:nth-child(2){box-shadow:0 0 0 3px var(--fundo),0 0 0 5px var(--lima)}
+
+/* foto larga com a moldura fina em degradê e o brilho embaixo */
+.moldura{left:124px;top:250px;width:calc(912px + var(--d,0px) / 2);height:405px;border-radius:40px;isolation:isolate}
+.moldura .img{position:absolute;inset:0;border-radius:inherit;background:#111 url('img/telao-banner.webp') center top/cover}
+.moldura::before{content:"";position:absolute;inset:-6px;border-radius:46px;padding:1.5px;background:linear-gradient(140deg,rgba(20,21,19,.16),rgba(20,21,19,.05) 42%,var(--dourado) 80%,var(--lima));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.moldura::after{content:"";position:absolute;left:34%;right:8%;bottom:-7px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--dourado),var(--lima),var(--creme),transparent);box-shadow:0 0 18px rgba(239,241,46,.65);pointer-events:none}
+.radio{left:166px;top:580px;width:52px;height:52px;border-radius:50%;border:2px solid #fff;display:grid;place-items:center;z-index:2}
+.radio i{width:30px;height:30px;border-radius:50%;border:2px solid #fff}
+.cheio{left:226px;top:580px;width:52px;height:52px;border-radius:50%;background:#fff;z-index:2}
+
+.bt{top:682px;height:46px;padding:0 26px;border-radius:999px;display:flex;align-items:center;font:500 17px var(--g)}
+.bt1{left:164px;background:#fff}
+.bt2{left:310px;background:var(--tinta);color:#fff}
+.num{left:520px;top:688px;height:34px;padding:0 14px;border:1.5px solid var(--tinta);border-radius:999px;display:flex;align-items:center;font:500 15px var(--g)}
+.frase{left:584px;top:688px;height:34px;padding:0 22px;border:1.5px solid var(--tinta);border-radius:999px;display:flex;align-items:center;white-space:nowrap;font:500 15px/1 var(--g)}
+.num,.frase{border:0!important;isolation:isolate}
+.num::before,.frase::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:linear-gradient(140deg,rgba(20,21,19,.35),rgba(20,21,19,.12) 42%,var(--dourado) 80%,var(--lima));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.num::after,.frase::after{content:"";position:absolute;left:30%;right:10%;bottom:-1px;height:1.5px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--dourado),var(--lima),var(--creme),transparent);box-shadow:0 0 10px rgba(239,241,46,.6);pointer-events:none}
+.texto2{left:124px;top:778px;width:calc(736px + var(--d,0px) / 2);font:300 27px/1.38 var(--g);color:var(--tinta)}
+
+/* ---------- direita ---------- */
+.titulo{left:872px;top:262px;font:200 96px/.98 var(--t);text-transform:uppercase;letter-spacing:-.02em;white-space:nowrap}
+.titulo .rec{display:inline-block;padding-left:270px}
+.pilula{left:1110px;top:298px;font:500 20px var(--g);text-transform:uppercase}
+.tog{left:1330px;top:290px;width:76px;height:46px;border-radius:999px;background:linear-gradient(90deg,var(--oliva),var(--lima));}
+.tog i{position:absolute;right:3px;top:3px;width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.conheca{left:880px;top:650px;width:346px;font:500 20px/1.1 var(--g);text-transform:uppercase;display:flex;align-items:center;justify-content:space-between}
+.conheca svg{width:22px;height:22px}
+.texto1{left:880px;top:724px;width:356px;font:300 24px/1.4 var(--g);color:var(--tinta)}
+.branco{left:1246px;top:620px;width:306px;min-height:300px;border-radius:28px;background:#fff;padding:24px 20px;box-shadow:0 30px 60px -36px rgba(20,21,19,.35)}
+.branco .ic{display:block;width:26px;height:26px;position:relative}
+.branco .ic i{position:absolute;width:16px;height:16px;border-radius:50%;background:var(--tinta)}
+.branco .ic i+i{left:10px;top:10px;background:var(--lima);box-shadow:0 0 0 2px #fff}
+.branco h4{margin-top:14px;font:500 19px/1.12 var(--g);text-transform:uppercase}
+.branco p{margin-top:12px;font:300 19px/1.4 var(--g);color:var(--tinta)}
+
+
+
+/* ===== padrão da plataforma Wheff (core/design.js, tema claro): raios 8/10/12 e pílula, bordas #e5e5e5,
+   texto #3a3e39, fundo #f6f8f4, sombra suave, destaque lima → dourado, bordas vivas em degradê ===== */
+:root{--p-bg:#f6f8f4;--p-card:#ffffff;--p-borda:#e5e5e5;--p-borda2:#d4d4d4;--p-capsula-borda:#dfe2da;--p-txt1:#3a3e39;--p-txt2:#4f544d;--p-txt3:#676d64;
+  --p-r:8px;--p-rl:10px;--p-rxl:12px;--p-sombra:0 1px 2px #e0e0e0,0 12px 26px #e4e4e4;--p-sombra-alta:0 2px 4px #d6d6d6,0 24px 44px #d6d6d6;--p-preto:#0a0a07}
+.p-cartao{background:var(--p-card)!important;border:1px solid var(--p-borda)!important;box-shadow:var(--p-sombra)!important}
+html,body,.palco{background:var(--p-bg)!important}
+.texto1,.texto2,.branco p,.marca-sub{color:var(--p-txt2)!important}
+.titulo,.cab-dir{color:var(--p-preto)}
+.moldura{border-radius:var(--p-rxl)!important}.moldura .img{border-radius:var(--p-rxl)!important}.moldura::before{border-radius:calc(var(--p-rxl) + 6px)!important}
+.card{border-radius:var(--p-rxl)!important;border:1px solid var(--p-borda)}
+.branco{border-radius:var(--p-rxl)!important;border:1px solid var(--p-borda);box-shadow:var(--p-sombra)!important}
+.bt1{background:var(--p-card)!important;border:1px solid var(--p-borda2)}
+.bt2{background:var(--p-preto)!important}
+/* ===== celular: os blocos se empilham numa coluna, com o mesmo estilo ===== */
+body.mob,html:has(body.mob){height:auto!important;overflow:auto!important}
+body.mob .palco{position:static!important}
+body.mob .tela{position:static!important;transform:none!important;width:auto!important;height:auto!important;display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding:22px 16px 96px}
+body.mob .tela>.abs{position:relative!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;translate:none!important;margin:0!important;width:100%!important;flex:1 1 100%;order:50}
+body.mob .tela .moldura,body.mob .tela .moldura .img,body.mob .tela .card,body.mob .tela .branco{border-radius:12px!important}
+body.mob .tela .moldura::before{border-radius:16px!important}
+body.mob .tela .titulo{order:1;white-space:normal!important;font-size:clamp(40px,12vw,60px)!important;line-height:1.02}
+body.mob .tela .titulo .rec{padding-left:0}
+body.mob .tela .cab-dir{order:2;font-size:22px}
+body.mob .tela .moldura{order:3;height:auto!important;aspect-ratio:16/10}
+body.mob .tela .texto1{order:4;font-size:19px!important}
+body.mob .tela .conheca{order:5}
+body.mob .tela .card{order:6;height:auto!important;min-height:220px;padding:46px 18px 84px}
+body.mob .tela .play{order:7}
+body.mob .tela .marca{order:8}
+body.mob .tela .marca-sub{order:9}
+body.mob .tela .rostos{order:10}
+body.mob .tela .bt{order:11;flex:0 0 auto;width:auto!important;height:46px!important}
+body.mob .tela .num{order:12;flex:0 0 auto;width:auto!important}
+body.mob .tela .frase{order:12;flex:1 1 auto;width:auto!important;white-space:normal!important;height:auto!important;padding:8px 16px!important}
+body.mob .tela .texto2{order:13;font-size:18px!important}
+body.mob .tela .branco{order:14;min-height:0!important}
+body.mob .tela .selo,body.mob .tela .pilula,body.mob .tela .tog,body.mob .tela .mini-txt{display:none!important}
+.anterior,.proxima{position:fixed;bottom:22px;z-index:65;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;box-shadow:0 10px 30px -12px rgba(0,0,0,.5);transition:transform .2s}
+.proxima{right:22px;background:var(--tinta);color:#fff}
+.anterior{right:74px;background:#fff;color:var(--tinta)}
+.proxima:hover{transform:translateX(4px)}.anterior:hover{transform:translateX(-4px)}
+.anterior svg,.proxima svg{width:18px;height:18px}
+/* modo de edição (só para quem pode editar) */
+.ed-bar{position:fixed;left:18px;bottom:18px;z-index:70;display:flex;gap:8px;align-items:center;font-family:var(--g)}
+.ed-bar[hidden]{display:none}
+.ed-bar button{height:44px;padding:0 20px;border-radius:999px;border:0;background:var(--tinta);color:#fff;font:500 15px var(--g);cursor:pointer;box-shadow:0 10px 30px -12px rgba(0,0,0,.5)}
+.ed-bar button[hidden]{display:none}
+.ed-bar button.sec{background:#fff;color:var(--tinta);box-shadow:0 0 0 1px var(--linha),0 10px 30px -12px rgba(0,0,0,.3)}
+.ed-bar span{font:300 13px var(--g);color:var(--tinta2);background:#fff;padding:6px 10px;border-radius:999px}
+.ed-bar span:empty{display:none}
+body.editando .tela .abs,body.editando .tela .tx,body.editando .tela .abs *{cursor:move;user-select:none;-webkit-user-select:none}
+body.editando .tela [contenteditable]{user-select:text;-webkit-user-select:text}
+body.editando .tela{touch-action:none}
+body.editando .tela .abs:hover{outline:1px dashed rgba(20,21,19,.35);outline-offset:3px}
+body.editando .tela .ed-sel{outline:2px solid var(--lima)!important;outline-offset:3px}
+body.editando [contenteditable]{cursor:text}
+body.editando [contenteditable]:focus{outline:2px dashed var(--tinta);outline-offset:2px}
+.ed-ferr{position:fixed;z-index:80;display:flex;gap:4px;padding:5px;border-radius:14px;background:var(--tinta);box-shadow:0 12px 30px -10px rgba(0,0,0,.5);font-family:var(--g)}
+.ed-ferr[hidden]{display:none}
+.ed-ferr button{min-width:34px;height:34px;padding:0 9px;border:0;border-radius:9px;background:rgba(255,255,255,.1);color:#fff;font:500 13px var(--g);cursor:pointer;white-space:nowrap}
+.ed-ferr button[hidden]{display:none}
+.ed-ferr button:hover{background:rgba(255,255,255,.22)}
+.ed-ferr .mover{cursor:grab;touch-action:none}
+/* passagem de página: a nova sobe de baixo e cobre a anterior */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:none;z-index:0}
+::view-transition-new(root){animation:sobe .9s cubic-bezier(.77,0,.18,1) both;z-index:1;box-shadow:0 -30px 80px -20px rgba(0,0,0,.25)}
+@keyframes sobe{from{transform:translateY(100%)}to{transform:translateY(0)}}
+</style>
+</head>
+<body>
+<main class="palco">
+<div class="tela" id="tela">
+
+  <!-- topo -->
+  <div class="abs dr mini-txt up" style="left:1432px;top:66px">Página (2)</div>
+  <p class="abs dr cab-dir up">Coprodução<br>digital<br>Wheff</p>
+
+  <!-- esquerda -->
+  <span class="abs selo"><img src="img/w-lima.png" alt=""></span>
+  <div class="abs card"><h3 class="up">Propósito /<br>inesquecível</h3><a class="pil up" href="#">Ver</a>
+    <div class="fotos"><span data-foto style="background-image:url('img/camiseta-preta.webp')"></span><span data-foto style="background-image:url('img/sacola.webp')"></span><b>W.</b></div></div>
+  <div class="abs play up"><i><svg viewBox="0 0 10 10"><path d="M2 1l7 4-7 4z" fill="currentColor"/></svg></i><span>Quem somos +<br>nossa crença</span></div>
+  <p class="abs marca up">Wheff</p>
+  <p class="abs marca-sub up">Coprodução +<br>digital.</p>
+  <div class="abs rostos"><span data-foto style="background-image:url('img/celular-poltrona.webp')"></span><span data-foto style="background-image:url('img/sacola-verde.webp')"></span><span data-foto style="background-image:url('img/papelaria-nova.webp')"></span></div>
+
+  <div class="abs moldura"><div class="img" data-foto role="img" aria-label="Telão da Wheff"></div></div>
+
+  <a class="abs bt bt1" href="#">Propósito</a>
+  <a class="abs bt bt2" href="#">Fale conosco</a>
+  <span class="abs num">02</span>
+  <span class="abs frase">Wheff - Propósito inesquecível. Resultados inevitáveis.</span>
+  <p class="abs texto2">Acreditamos que sua verdade é seu maior ativo. Por isso, quem você é orienta cada etapa do nosso trabalho, da criação da sua marca à venda dos seus produtos. Fazemos isso para impulsionar o propósito que Deus plantou em você, unindo construção de marca com criação de produtos e lançamentos digitais. É assim que buscamos fazer o nome de Jesus maior e servir ao Reino de Deus. Na Wheff, servir vem antes de vender, e cada detalhe importa, da promessa à entrega.</p>
+
+  <!-- direita -->
+  <h1 class="abs dr titulo"><span class="tx">Sua</span><br><span class="tx">verdade é seu -</span><br><span class="tx">maior ativo.</span><br><span class="rec">Wheff +</span></h1>
+  <span class="abs dr pilula">+ Quem somos</span>
+  <span class="abs dr tog"><i></i></span>
+  <a class="abs dr conheca" href="#"><span>Conheça<br>a parceria</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <p class="abs dr texto1">Somos a Wheff, uma marca de coprodução digital. Unimos branding, posicionamento e lançamentos para ajudar você a construir uma marca forte e memorável e transformar o que sabe e acredita em produtos próprios.</p>
+  <div class="abs dr branco"><span class="ic"><i></i><i></i></span><h4>Nossa visão /<br>legado</h4><p>Queremos ser referência no Brasil na construção da sua marca, uma marca que cresce com propósito, cria conexões genuínas e deixa um legado além das redes sociais.</p></div>
+</div>
+</main>
+<a class="anterior" href="inicio.html" aria-label="Página anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+<a class="proxima" href="pagina-3.html" aria-label="Próxima página"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<div class="ed-bar" id="ed-bar" hidden><span id="ed-msg"></span><button type="button" class="sec" id="ed-desfaz" hidden>Desfazer</button><button type="button" class="sec" id="ed-sai" hidden>Sair</button><button type="button" id="ed-bt">Editar página</button></div>
+<div class="ed-ferr" id="ed-ferr" hidden>
+  <button type="button" id="f-mover" title="Escrever neste texto">Escrever</button>
+  <button type="button" data-a="s-" title="Diminuir">A&minus;</button><button type="button" data-a="s+" title="Aumentar">A+</button>
+  <button type="button" data-a="l-" title="Linhas mais juntas">&#8597;&minus;</button><button type="button" data-a="l+" title="Linhas mais afastadas">&#8597;+</button>
+  <button type="button" id="f-foto" hidden>Trocar foto</button>
+  <button type="button" data-a="zero" title="Voltar ao original">&#8634;</button>
+</div>
+<input type="file" id="ed-arq" accept="image/*" hidden>
+<script type="application/json" id="textos">{}</script>
+<script>
+  // ---- página editável: textos, posição, tamanho, espaçamento e fotos ----
+  const tela0=document.getElementById('tela');
+  const aceita={acceptNode:n=>n.nodeValue.trim()&&n.nodeValue.trim()!=='+'&&!n.parentElement.closest('.barras')?1:3};
+  const nosTexto=()=>{ const w=document.createTreeWalker(tela0,NodeFilter.SHOW_TEXT,aceita); const r=[]; let n; while(n=w.nextNode()) r.push(n); return r; };
+  // cada trecho de texto que divide o elemento com outros elementos vira um span próprio
+  nosTexto().forEach(n=>{ const p=n.parentElement; if([...p.children].some(c=>c.tagName!=='BR')){ const sp=document.createElement('span'); sp.className='tx'; p.insertBefore(sp,n); sp.appendChild(n); } });
+  const FONTE='<!doctype html>'+document.documentElement.outerHTML;
+  const unid=[...new Set(nosTexto().map(n=>n.parentElement))];
+  const blocos=[...tela0.querySelectorAll('.abs')];
+  const fotos=[...tela0.querySelectorAll('[data-foto]')];
+  const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const limpa=h=>{ const d=document.createElement('div'); d.innerHTML=h; return [...d.childNodes].map(n=>n.nodeName==='BR'?'<br>':esc(n.textContent)).join(''); };
+  let EST={}; try{ EST=JSON.parse(document.getElementById('textos').textContent)||{}; }catch(e){} if(Array.isArray(EST)) EST={};
+  EST.t=EST.t||{}; EST.a=EST.a||{}; EST.f=EST.f||{}; EST.u=EST.u||{};
+  const ORIG={t:unid.map(u=>u.innerHTML), f:fotos.map(f=>f.style.backgroundImage)};
+  function aplica(){
+    unid.forEach((u,i)=>{ u.innerHTML = EST.t[i]!=null ? limpa(EST.t[i]) : ORIG.t[i]; });
+    blocos.forEach((b,i)=>{ const a=EST.a[i]||{}; b.style.marginLeft=(a.x||0)+'px'; b.style.marginTop=(a.y||0)+'px'; b.style.scale=a.s&&a.s!==1?String(a.s):'';
+      const lh=a.l?String(a.l):''; [b,...b.querySelectorAll('*')].forEach(e=>{ e.style.lineHeight=lh; }); });
+    unid.forEach((u,i)=>{ if(u.classList.contains('abs')) return; const a=EST.u[i]||{}; u.style.position=(a.x||a.y)?'relative':''; u.style.left=(a.x||0)?a.x+'px':''; u.style.top=(a.y||0)?a.y+'px':'';
+      u.style.fontSize=''; u.style.lineHeight=a.l?String(a.l):''; if(a.s&&a.s!==1) u.style.fontSize=(parseFloat(getComputedStyle(u).fontSize)*a.s)+'px'; if(a.l&&!u.style.display) u.style.display=getComputedStyle(u).display==='inline'?'inline-block':''; });
+    fotos.forEach((f,i)=>{ const u=EST.f[i]; f.style.backgroundImage = u ? 'url("'+String(u).replace(/["\\()]/g,'')+'")' : ORIG.f[i]; });
+  }
+  aplica();
+
+  // mesma composição em qualquer tela: o quadro inteiro cresce ou encolhe por igual; a sobra de largura vai para os lados
+  const tela=document.getElementById('tela');
+  function ajusta(){ const mob=innerWidth<760; document.body.classList.toggle('mob',mob); if(mob) return; const k=Math.min(innerWidth/1640, innerHeight/1080); const d=Math.max(0, innerWidth/k-1640); tela.style.setProperty('--k',k); tela.style.setProperty('--d',d+'px'); encaixa(); }
+  // título: ocupa da coluna até a margem direita, sem passar do texto de baixo
+  function encaixa(){ const t=document.querySelector('.titulo'); t.style.fontSize=''; const f=parseFloat(getComputedStyle(t).fontSize);
+    const k=Math.min(680/t.offsetWidth, 400/t.offsetHeight); t.style.fontSize=(f*k)+'px';
+    // texto de baixo: o maior tamanho (até 34 px) que cabe até o fim da página
+    const p=document.querySelector('.texto2'); let fs=34; p.style.fontSize=fs+'px'; while(fs>18 && p.offsetTop+p.offsetHeight>1025){ fs-=1; p.style.fontSize=fs+'px'; } }
+  addEventListener('resize',ajusta); ajusta(); document.fonts.ready.then(ajusta);
+
+</script>
+</body>
+</html>
