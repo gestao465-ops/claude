@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wheff Studio · Equipe</title>
+<style>
+@font-face{font-family:"Editorial";src:url("fonts/editorial-regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Editorial";src:url("fonts/editorial-italic.otf") format("opentype");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Editorial";src:url("fonts/editorial-ultralight.otf") format("opentype");font-weight:200;font-style:normal;font-display:swap}
+@font-face{font-family:"Editorial";src:url("fonts/editorial-ultralight-italic.otf") format("opentype");font-weight:200;font-style:italic;font-display:swap}
+@font-face{font-family:"Recoleta";src:url("fonts/recoleta-light.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Recoleta";src:url("fonts/recoleta-medium.woff2") format("woff2");font-weight:500;font-display:swap}
+:root{--fundo:#efefec;--carta:#e2e2dd;--branco:#141513;--tinta2:#6f726a;--tinta3:#a9aba4;--linha:#d9d9d4;--lima:#eff12e;--oliva:#696a00;--dourado:#c8aa18;--creme:#f2e7c7;--g:"Recoleta",Georgia,serif;--t:"Editorial",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--fundo)}
+body{color:var(--branco);font-family:var(--g);overflow:hidden}
+a,button{color:inherit;text-decoration:none;font:inherit;background:none;border:0;cursor:pointer}
+.palco{position:fixed;inset:0;background:var(--fundo)}
+.tela{position:absolute;left:50%;top:50%;width:calc(1640px + var(--d,0px));height:1040px;transform:translate(-50%,-50%) scale(var(--k,1));transform-origin:50% 50%}
+.abs{position:absolute}
+.dr{translate:var(--d,0px) 0}
+
+/* ---------- esquerda ---------- */
+.selo{left:80px;top:46px;display:flex;align-items:center;gap:12px;font:300 18px var(--g);color:var(--tinta2)}
+.selo img{height:22px}
+.selo b{font-weight:500;color:var(--branco)}
+.titulo{left:80px;top:100px;white-space:nowrap;font:400 96px/1.14 var(--t);letter-spacing:-.02em}
+.titulo em{font-style:italic;position:relative}
+.titulo em::after{content:"";position:absolute;left:2px;right:2px;bottom:22px;height:2px;border-radius:2px;background:var(--lima)}
+.titulo .apaga{background:linear-gradient(90deg,#141513,#a9aba4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.texto{left:80px;top:340px;width:calc(700px + var(--d,0px) * .7);font:300 21px/1.5 var(--g);color:#141513}
+.texto p+p{margin-top:14px}
+.bts{left:80px;top:800px;display:flex;gap:16px}
+.bts a{height:54px;padding:0 30px;border-radius:999px;display:flex;align-items:center;font:500 17px var(--g)}
+.bts a:first-child{background:linear-gradient(135deg,#eff12e 0%,#eff12e 45%,#c8aa18 100%);color:#141513;box-shadow:0 6px 16px rgba(239,241,46,.25)}
+.bts a+a{border:1.5px solid var(--branco)}
+.fio{left:80px;top:886px;width:calc(700px + var(--d,0px) * .7);height:1px;background:var(--linha)}
+.nums{left:80px;top:906px;width:calc(700px + var(--d,0px) * .7);display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.nums small{display:block;font:500 12px var(--g);letter-spacing:.12em;text-transform:uppercase;color:var(--tinta3)}
+.nums b{display:block;margin-top:6px;font:400 44px/1 var(--t)}
+.nums span{display:block;margin-top:6px;font:300 15px var(--g);color:var(--tinta2)}
+.ficticio{left:80px;top:1012px;font:300 12px var(--g);color:var(--tinta3)}
+
+/* ---------- direita: mosaico ---------- */
+.membro{position:relative;width:100%;border-radius:16px;overflow:hidden;background:var(--carta);text-align:left;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.membro:focus{outline:none}
+.membro:focus-visible{outline:3px solid var(--lima);outline-offset:3px}
+.membro:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(20,21,19,.35)}
+.foto-vaga{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#f4f4f1,#d6d6d0 70%)}
+.foto-vaga b{font:300 16px var(--g);color:var(--tinta3);letter-spacing:.1em;text-transform:uppercase}
+.nome{position:absolute;left:12px;right:12px;bottom:12px;padding:14px 16px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,255,255,.42));-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);border:1px solid rgba(255,255,255,.55);box-shadow:0 18px 36px -22px rgba(20,21,19,.45);color:#141513;display:flex;flex-direction:column;gap:3px}
+.nome b{font:500 18px var(--g)}
+.nome small{font:300 14px var(--g);color:#55574f}
+.dado{position:relative;width:100%;border-radius:16px;padding:28px;display:flex;flex-direction:column;justify-content:space-between}
+.dado b{display:block;font:400 132px/.9 var(--t);letter-spacing:-.02em}
+.dado span{display:block;margin-top:auto;font:300 27px/1.25 var(--g)}
+.dado small{display:block;font:300 18px var(--g);opacity:.8}
+.d-lima{background:var(--lima);color:#141513}
+.d-creme{background:var(--oliva);color:#f7f4ed}
+.d-escuro{background:#3a3e39;color:#f7f4ed}
+.d-escuro b{color:var(--lima)}
+.d-creme small,.d-escuro small{margin-bottom:6px}
+
+.carrossel{left:860px;top:0;width:720px;height:1040px;display:grid;grid-template-columns:1fr 1fr;gap:20px;overflow:hidden;-webkit-mask:linear-gradient(transparent,#000 16%,#000 80%,transparent);mask:linear-gradient(transparent,#000 16%,#000 80%,transparent)}
+.coluna{overflow:hidden}
+.rolo{display:flex;flex-direction:column;gap:20px;animation:rola 34s linear infinite}
+.c2 .rolo{animation-duration:42s;animation-delay:-14s}
+.carrossel:hover .rolo{animation-play-state:paused}
+@keyframes rola{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 10px))}}
+.rolo>*{position:relative;flex:none;width:100%;height:330px}
+@media (prefers-reduced-motion:reduce){.rolo{animation:none}}
+
+html.trava.trava:has(body),html.trava.trava:has(body) body{overflow:hidden!important;height:100%!important}
+
+/* ===== padrão da plataforma Wheff (core/design.js, tema claro): raios 8/10/12 e pílula, bordas #e5e5e5,
+   texto #3a3e39, fundo #f6f8f4, sombra suave, destaque lima → dourado, bordas vivas em degradê ===== */
+:root{--p-bg:#f6f8f4;--p-card:#ffffff;--p-borda:#e5e5e5;--p-borda2:#d4d4d4;--p-capsula-borda:#dfe2da;--p-txt1:#3a3e39;--p-txt2:#4f544d;--p-txt3:#676d64;
+  --p-r:8px;--p-rl:10px;--p-rxl:12px;--p-sombra:0 1px 2px #e0e0e0,0 12px 26px #e4e4e4;--p-sombra-alta:0 2px 4px #d6d6d6,0 24px 44px #d6d6d6;--p-preto:#0a0a07}
+.p-cartao{background:var(--p-card)!important;border:1px solid var(--p-borda)!important;box-shadow:var(--p-sombra)!important}
+html,body,.palco{background:var(--p-bg)!important}
+.texto{color:var(--p-txt2)!important}
+.titulo{color:var(--p-preto)}
+.membro,.dado{border-radius:var(--p-rxl)!important}
+.membro{border:1px solid var(--p-borda)}
+.nome{border-radius:var(--p-r)!important}
+.bts a+a{border-color:var(--p-borda2)!important;background:var(--p-card)}
+.pv-card{border-radius:var(--p-rxl)!important}.pv-leg{border-radius:var(--p-r)!important}
+.pv-bio-caixa{border-radius:var(--p-rxl)!important}
+.pv-seta,.pv-linha-bt{border-color:rgba(247,244,237,.45)!important}
+/* ===== celular: os blocos se empilham numa coluna, com o mesmo estilo ===== */
+body.mob,html:has(body.mob){height:auto!important;overflow:auto!important}
+body.mob .palco{position:static!important}
+body.mob .tela{position:static!important;transform:none!important;width:auto!important;height:auto!important;display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding:22px 16px 96px}
+body.mob .tela>.abs{position:relative!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;translate:none!important;margin:0!important;width:100%!important;flex:1 1 100%;order:50}
+body.mob .tela .membro,body.mob .tela .dado{border-radius:10px!important}
+body.mob .tela .nome{border-radius:8px!important}
+@media (max-width:760px){.pv-card{border-radius:10px}.pv-leg{border-radius:8px}}
+body.mob .tela .selo{order:1}
+body.mob .tela .titulo{order:2;white-space:normal!important;font-size:clamp(40px,12vw,60px)!important}
+body.mob .tela .texto{order:3;font-size:18px!important}
+body.mob .tela .bts{order:4;flex-wrap:wrap}
+body.mob .tela .fio{order:5}
+body.mob .tela .nums{order:6;grid-template-columns:repeat(3,1fr);gap:10px}
+body.mob .tela .nums b{font-size:34px}
+body.mob .tela .carrossel{order:7;height:560px!important}
+body.mob .tela .rolo>*{height:250px}
+body.mob .tela .dado b{font-size:76px}
+body.mob .tela .dado span{font-size:15px}
+body.mob .tela .titulo em::after{bottom:4px}
+body.mob .tela .dado{padding:18px}
+body.mob .tela .nome{left:8px;right:8px;bottom:8px;padding:10px 12px}
+body.mob .tela .nome b{font-size:15px}
+body.mob .tela .nome small{font-size:12px}
+body.mob .tela .bts a{height:48px;padding:0 22px;font-size:15px}
+/* ---------- página da pessoa: fundo em tela cheia + carrossel de trabalhos ---------- */
+.perfil.pv{overflow:hidden}
+.pv{padding:0;overflow:hidden;background:#3a3e39;color:#f7f4ed;inset:0;border-radius:0}
+.pv-fundo{position:absolute;inset:-80px;background:center/cover;filter:blur(40px) saturate(1.15);opacity:0;transform:scale(1.06);transition:opacity 1.2s ease,transform 10s linear}
+.pv-fundo.on{opacity:1;transform:scale(1)}
+.pv-sem{background:radial-gradient(circle at 70% 40%,#3a3e39,#0d0e0c 70%)!important;filter:none}
+.pv-veu{position:absolute;inset:0;background:linear-gradient(90deg,rgba(58,62,57,.9) 0%,rgba(58,62,57,.68) 42%,rgba(58,62,57,.25) 75%),linear-gradient(0deg,rgba(40,43,39,.65),transparent 45%)}
+.pv-topo{position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center;padding:22px clamp(20px,5vw,72px);z-index:3}
+.pv-voltar{border-color:rgba(247,244,237,.35);color:#f7f4ed}
+.pv-logo{height:22px;width:auto}
+.pv-topo .pv-sobre-bt{font:500 15px var(--g);color:#f7f4ed;border-bottom:1px solid rgba(247,244,237,.5);padding-bottom:2px}
+.pv-esq{position:absolute;left:clamp(20px,5vw,72px);top:clamp(90px,14vh,140px);width:min(40vw,560px);z-index:3}
+.pv-eu{display:flex;align-items:center;gap:14px}
+.pv-foto{width:64px;height:64px;border-radius:50%;flex:none;background:url('img/ananda.webp') 57% 30%/170% no-repeat;box-shadow:0 0 0 2px #0d0e0c,0 0 0 4px var(--lima)}
+.pv-eu b{display:block;font:500 18px var(--g)}
+.pv-eu small{display:block;margin-top:2px;font:300 14px var(--g);color:rgba(247,244,237,.75)}
+.pv-sub{margin-top:clamp(28px,6vh,60px);display:flex;align-items:center;gap:12px;font:300 clamp(14px,1.1vw,17px) var(--g);color:rgba(247,244,237,.85)}
+.pv-sub i{width:28px;height:1.5px;background:var(--lima)}
+.pv-nome{margin-top:10px;font:400 clamp(36px,5vw,84px)/.95 var(--t);text-transform:uppercase;letter-spacing:-.01em}
+.pv-txt{margin-top:18px;font:300 clamp(15px,1.15vw,18px)/1.55 var(--g);color:rgba(247,244,237,.88);max-width:46ch}
+.pv-troca{animation:pvTroca .7s cubic-bezier(.2,.7,.2,1) both}
+@keyframes pvTroca{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.pv-bts{margin-top:28px;display:flex;align-items:center;gap:14px}
+.pv-bola{width:48px;height:48px;border-radius:50%;background:var(--lima);color:#141513;display:grid;place-items:center}
+.pv-bola svg{width:18px;height:18px}
+.pv-linha-bt{height:48px;padding:0 24px;border-radius:999px;border:1.5px solid rgba(247,244,237,.6)!important;font:500 15px var(--g)}
+.pv-trilho{position:absolute;left:calc(46vw - 16px);right:0;bottom:calc(clamp(110px,16vh,160px) - 40px);overflow:hidden;z-index:3;padding:30px 0 40px 16px}
+.pv-cards{display:flex;gap:18px;transition:transform .9s cubic-bezier(.77,0,.18,1)}
+.pv-card{position:relative;flex:none;width:clamp(150px,13vw,230px);aspect-ratio:3/4.6;border-radius:16px;overflow:hidden;background:#141513;text-align:left;transition:transform .5s,opacity .5s,box-shadow .5s;opacity:.92;box-shadow:0 10px 24px -16px rgba(0,0,0,.45)}
+.pv-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.pv-card.on{opacity:1;transform:translateY(-10px);box-shadow:0 16px 30px -16px rgba(0,0,0,.5)}
+.pv-card::before{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;padding:1px;background:linear-gradient(140deg,rgba(255,255,255,.35),rgba(255,255,255,.06) 42%,var(--dourado) 80%,var(--lima));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .5s;pointer-events:none}
+.pv-card::after{content:"";position:absolute;z-index:2;inset:0;border-radius:inherit;background:linear-gradient(90deg,transparent 12%,rgba(255,255,255,.95) 38%,#141513 72%,transparent 92%) top/100% 1.5px no-repeat,linear-gradient(90deg,transparent 30%,var(--dourado) 50%,var(--lima) 70%,var(--creme) 84%,transparent 96%) bottom/100% 1.5px no-repeat;filter:drop-shadow(0 0 4px rgba(239,241,46,.55));opacity:0;transition:opacity .5s;pointer-events:none}
+.pv-card.on::before,.pv-card.on::after{opacity:1}
+.pv-sg{position:absolute;inset:0;display:grid;place-items:center;font:400 54px var(--t);color:var(--lima)}
+.pv-leg{position:absolute;left:10px;right:10px;bottom:10px;z-index:1;padding:10px 12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,255,255,.42));-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);border:1px solid rgba(255,255,255,.55);box-shadow:0 18px 36px -22px rgba(20,21,19,.45);display:flex;flex-direction:column;gap:3px}
+.pv-leg small{font:300 12px var(--g);color:#55574f}
+.pv-leg b{font:400 18px/1 var(--t);text-transform:uppercase;color:#141513}
+.pv-nav{position:absolute;left:46vw;right:clamp(20px,4vw,60px);bottom:clamp(36px,6vh,60px);display:flex;align-items:center;gap:14px;z-index:3}
+.pv-seta{width:52px;height:52px;border-radius:50%;border:1.5px solid rgba(247,244,237,.6)!important;display:grid;place-items:center;color:#f7f4ed}
+.pv-seta svg{width:20px;height:20px}
+.pv-barra{flex:1;height:8px;border-radius:999px;background:rgba(247,244,237,.12);box-shadow:inset 0 0 0 1px rgba(247,244,237,.18);margin:0 12px;position:relative;overflow:hidden}
+.pv-barra i{position:absolute;top:1px;bottom:1px;left:1px;width:0;border-radius:999px;background:linear-gradient(90deg,var(--oliva),var(--dourado) 45%,var(--lima) 80%,var(--creme));box-shadow:0 0 12px rgba(239,241,46,.55)}
+.pv-barra i.anda{animation:pvAnda 10s linear forwards}
+@keyframes pvAnda{to{width:calc(100% - 2px)}}
+.pv-num{font:400 clamp(40px,4vw,64px)/1 var(--t);color:#f7f4ed}
+.pv-bio{position:absolute;inset:0;z-index:6;background:rgba(10,11,9,.6);display:grid;place-items:center;padding:20px}
+.pv-bio[hidden]{display:none}
+.pv-bio-caixa{position:relative;width:min(600px,92vw);max-height:72vh;overflow:auto;background:#3a3e39;color:#f2e7c7;border-radius:8px;padding:clamp(22px,3vw,36px) clamp(22px,3vw,36px) clamp(22px,3vw,32px);box-shadow:0 30px 70px -30px rgba(0,0,0,.7);scrollbar-width:thin;scrollbar-color:var(--lima) rgba(242,231,199,.08)}
+.pv-bio-caixa::-webkit-scrollbar{width:8px}
+.pv-bio-caixa::-webkit-scrollbar-track{background:rgba(242,231,199,.06);border-radius:999px;margin:14px 0}
+.pv-bio-caixa::-webkit-scrollbar-thumb{border-radius:999px;background:linear-gradient(180deg,var(--lima),var(--dourado) 60%,var(--oliva));box-shadow:0 0 8px rgba(239,241,46,.5)}
+.pv-bio-caixa h3{font:400 30px var(--t);color:#fff}
+.pv-bio-caixa p{margin-top:12px;font:300 16px/1.6 var(--g);color:#f2e7c7}
+.pv-bio-x{position:absolute;right:14px;top:14px;font:300 28px/1 var(--g);color:#f2e7c7}
+@media (max-width:860px){
+.perfil.pv{overflow-y:auto;overflow-x:hidden;background:#3a3e39}
+.pv-rolagem{display:none;position:fixed;right:4px;top:12px;bottom:12px;width:5px;border-radius:999px;background:rgba(242,231,199,.14);z-index:9;pointer-events:none}
+.pv-rolagem i{position:absolute;left:0;right:0;top:0;border-radius:999px;background:linear-gradient(180deg,var(--lima),var(--dourado) 60%,var(--oliva))}
+.perfil.pv{scrollbar-width:thin;scrollbar-color:var(--lima) rgba(242,231,199,.1)}
+.perfil.pv::-webkit-scrollbar{width:8px;display:block}
+.perfil.pv::-webkit-scrollbar-track{background:rgba(242,231,199,.08)}
+.perfil.pv::-webkit-scrollbar-thumb{border-radius:999px;background:linear-gradient(180deg,var(--lima),var(--dourado) 60%,var(--oliva))}
+.pv-fundo,.pv-veu{position:fixed}
+.pv-topo{position:relative;padding:16px}
+.pv-voltar{height:36px;padding:0 14px;font-size:13px;white-space:nowrap;gap:8px}
+.pv-voltar svg{width:15px;height:15px}
+.pv-v2{display:none}
+.pv-topo{gap:16px}
+.pv-rolagem{display:block}
+.pv-logo{height:18px}
+.pv-esq{position:relative;left:auto;top:auto;width:auto;padding:4px 16px 0}
+.pv-foto{width:52px;height:52px}
+.pv-eu b{font-size:16px}.pv-eu small{font-size:13px}
+.pv-sub{margin-top:26px}
+.pv-nome{font-size:clamp(34px,10.5vw,48px)}
+.pv-txt{display:block;font-size:16px;margin-top:14px}
+.pv-bts{margin-top:20px}
+.pv-bola{width:44px;height:44px}
+.pv-linha-bt{height:44px;padding:0 18px;font-size:14px}
+.pv-trilho{position:relative;left:auto;right:auto;bottom:auto;margin-top:22px;padding:24px 0 30px 16px}
+.pv-trilho{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.pv-trilho::-webkit-scrollbar{display:none}
+.pv-cards{transform:none!important;padding-right:16px}
+.pv-card{width:150px;scroll-snap-align:start;scroll-margin-left:16px}
+.pv-leg{padding:8px 10px}.pv-leg b{font-size:15px}.pv-leg small{font-size:11px}
+.pv-nav{position:relative;left:auto;right:auto;bottom:auto;padding:0 16px 28px}
+.pv-seta{width:44px;height:44px}
+.pv-num{font-size:40px}
+}
+/* tela dobrada (mockup) gerada a partir das páginas reais dos projetos */
+.pv-trilho-vazio{display:none}
+.pv-dobra{position:absolute;left:44vw;right:3vw;top:10vh;bottom:16vh;z-index:3;display:grid;place-items:center}
+.dobra-img{max-width:100%;max-height:100%;width:auto;height:auto;border-radius:12px;box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
+.dobra-troca{animation:dobraTroca .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes dobraTroca{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:none}}
+@media (max-width:860px){.pv-dobra{position:relative;left:auto;right:auto;top:auto;bottom:auto;margin:16px 16px 6px}}
+/* ---------- página de cada pessoa ---------- */
+.perfil{position:fixed;inset:0;z-index:90;background:var(--fundo);overflow:auto;padding:40px clamp(20px,5vw,80px) 60px;animation:sobe .7s cubic-bezier(.77,0,.18,1) backwards}
+.perfil[hidden]{display:none}
+@keyframes sobe{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.voltar{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 20px;border-radius:999px;border:1.5px solid var(--linha);font:500 15px var(--g)}
+.voltar svg{width:18px;height:18px}
+.perfil-grade{margin-top:30px;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:start}
+.perfil-foto{position:relative;inset:auto;aspect-ratio:4/5;border-radius:30px}
+.rot{font:500 13px var(--g);letter-spacing:.12em;text-transform:uppercase;color:var(--tinta3)}
+.perfil h2{margin-top:10px;font:400 clamp(44px,5vw,76px)/1 var(--t)}
+.funcao{margin-top:12px;font:300 22px var(--g);color:var(--oliva)}
+.bio{margin-top:22px;max-width:62ch;font:300 19px/1.55 var(--g);color:#141513}
+.perfil h3{margin-top:36px;font:400 30px var(--t)}
+.trabs{margin-top:16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.trab{aspect-ratio:4/3;border-radius:18px;background:var(--carta);display:grid;place-items:center;border:1px dashed var(--linha)}
+.trab span{font:300 14px var(--g);color:var(--tinta3)}
+.perfil-esq{display:flex;flex-direction:column}
+.prints{margin-top:14px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.print{margin:0;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 14px 30px -24px rgba(20,21,19,.35)}
+.print img{display:block;width:100%;height:auto}
+.print figcaption{padding:10px 14px;font:500 14px var(--g)}
+.trab-tit{margin-top:48px!important}
+.trab-lista{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr));gap:18px}
+.trab-linha{display:grid;grid-template-columns:130px minmax(0,1fr);gap:22px;align-items:center;padding:14px;border-radius:16px;background:#fff;box-shadow:0 14px 30px -24px rgba(20,21,19,.35)}
+.trab-linha .print{margin:0;border-radius:10px;overflow:hidden;background:#f4f4f1;box-shadow:0 0 0 1px var(--linha)}
+.trab-linha .print img{display:block;width:100%;height:auto}
+.print-vazio{aspect-ratio:776/1600;display:grid;place-items:center;background:#141513!important}
+.print-vazio span{font:400 44px var(--t);color:var(--lima)}
+.trab-txt{padding-right:8px}
+.trab-txt .n{display:block;font:400 22px var(--t);color:var(--tinta3)}
+.trab-cab{margin-top:8px;display:flex;align-items:center;gap:12px}
+.trab-cab .av{width:46px!important;height:46px!important}
+.trab-txt p{margin-top:14px;font:300 19px/1.5 var(--g);color:#141513}
+@media (max-width:520px){.trab-linha{grid-template-columns:110px minmax(0,1fr);gap:14px}.trab-txt p{font-size:16px}}
+.bio p+p{margin-top:14px}
+.projs{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.proj{display:flex;gap:14px;align-items:flex-start;padding:18px;border-radius:16px;background:#fff;box-shadow:0 14px 30px -24px rgba(20,21,19,.35)}
+.trab-cab .av,.proj .av{flex:none;width:58px;height:58px;border-radius:50%;background:center/128% no-repeat;box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--lima)}
+.trab-cab .av-txt,.proj .av-txt{display:grid;place-items:center;background:#141513;color:var(--lima);font:400 18px var(--t)}
+.trab-cab h4,.proj h4{font:500 18px var(--g)}
+.trab-cab small,.proj small{display:block;margin-top:2px;font:300 13px var(--g);color:var(--tinta2)}
+.proj p{margin-top:8px;font:300 16px/1.45 var(--g);color:#141513}
+@media (max-width:760px){.perfil-grade{grid-template-columns:1fr}.trabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.anterior,.proxima{position:fixed;bottom:22px;z-index:65;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;box-shadow:0 10px 30px -12px rgba(0,0,0,.5);transition:transform .2s}
+.proxima{right:22px;background:var(--lima);color:#141513}
+.anterior{right:74px;background:#fff;color:#141513}
+.proxima:hover{transform:translateX(4px)}.anterior:hover{transform:translateX(-4px)}
+.anterior svg,.proxima svg{width:18px;height:18px}
+/* passagem de página: a nova sobe de baixo e cobre a anterior */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:none;z-index:0}
+::view-transition-new(root){animation:sobe .9s cubic-bezier(.77,0,.18,1) both;z-index:1;box-shadow:0 -30px 80px -20px rgba(0,0,0,.25)}
+@keyframes sobe{from{transform:translateY(100%)}to{transform:translateY(0)}}
+
+/* ===== vitrine da equipe (estrutura da referência) — padrão da plataforma ===== */
+html:not(.trava),html:not(.trava) body{height:auto!important;overflow:auto!important}
+body{background:#f6f8f4!important}
+.vt{max-width:1600px;margin:0 auto;padding:clamp(20px,3vw,40px) clamp(16px,3vw,44px) 110px;color:#3a3e39}
+.vt-topo{display:grid;grid-template-columns:1fr auto auto;gap:24px;align-items:center}
+.vt-tit{white-space:nowrap;font:400 clamp(30px,4.6vw,84px)/1 var(--t);letter-spacing:-.025em;color:#0a0a07}
+.vt-tit em{font-style:italic;position:relative}
+.vt-tit em::after{content:"";position:absolute;left:2px;right:2px;bottom:.12em;height:2px;background:var(--lima)}
+.vt-meta{display:flex;flex-direction:column;gap:4px;font:500 13px var(--g);color:#676d64;padding-top:12px}
+.vt-selo{position:relative;width:92px;height:92px;flex:none}
+.vt-selo svg{width:100%;height:100%;animation:vtGira 18s linear infinite}
+.vt-selo text{font:500 9.5px var(--g);letter-spacing:.32em;fill:#0a0a07}
+.vt-selo img{position:absolute;left:50%;top:50%;width:30px;transform:translate(-50%,-50%)}
+@keyframes vtGira{to{transform:rotate(360deg)}}
+.vt-grade{margin-top:clamp(14px,1.8vw,26px);display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr) minmax(0,360px);gap:clamp(18px,2.4vw,36px);align-items:stretch}
+.vt-esq{display:flex;flex-direction:column;gap:18px}
+.vt-mini{aspect-ratio:1/1;border-radius:10px;background:#fff center/cover no-repeat;border:1px solid #e5e5e5;box-shadow:0 1px 2px #e0e0e0,0 12px 26px #e4e4e4}
+.vt-nota{font:500 14px var(--g);color:#0a0a07;letter-spacing:.06em}.vt-nota b{letter-spacing:0;margin-left:8px;font-weight:500;color:#676d64}
+.vt-num{margin-top:auto}
+.vt-num b{display:block;font:400 clamp(64px,6vw,104px)/.9 var(--t);color:#0a0a07}
+.vt-num small{display:block;margin-top:10px;font:500 13px/1.35 var(--g);text-transform:uppercase;letter-spacing:.04em;color:#4f544d}
+.vt-nav{display:flex;align-items:center;gap:8px}
+.vt-nav button{width:40px;height:40px;border-radius:999px;border:1px solid #d4d4d4;background:#fff;color:#0a0a07;display:grid;place-items:center;cursor:pointer}
+.vt-nav button:hover{border-color:#c8aa18}
+.vt-nav svg{width:16px;height:16px}
+.vt-nav span{margin-left:6px;font:500 13px var(--g);color:#676d64}
+.vt-foto{position:relative;min-height:clamp(420px,56vh,640px);border-radius:12px;background:#e9ebe5 center/cover;overflow:hidden;box-shadow:0 1px 2px #e0e0e0,0 12px 26px #e4e4e4;transition:background-image .4s}
+
+.vt-tags{position:absolute;left:16px;bottom:16px;z-index:2;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.vt-tags span{display:inline-flex;align-items:center;gap:10px;height:38px;padding:0 16px 0 6px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.86),rgba(255,255,255,.6));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.6);font:500 13px var(--g);color:#0a0a07;text-transform:uppercase;letter-spacing:.03em}
+.vt-tags i{width:28px;height:28px;border-radius:50%;background:#0a0a07;color:var(--lima);display:grid;place-items:center}
+.vt-tags svg{width:14px;height:14px}
+.vt-pontos{display:flex;gap:8px;margin-top:-6px}
+.vt-pontos button{width:8px;height:8px;padding:0;border:0;border-radius:999px;background:#d4d4d4;cursor:pointer;transition:width .3s,background .3s}
+.vt-pontos button[aria-current="true"]{width:22px;background:#c8aa18}
+.vt-dir{display:flex;flex-direction:column}
+.vt-func{font:500 13px/1.35 var(--g);text-transform:uppercase;letter-spacing:.04em;color:#4f544d;max-width:30ch}
+.vt-nome{margin-top:10px;font:400 clamp(34px,2.9vw,52px)/1 var(--t);color:#0a0a07}
+.vt-txt{margin-top:14px;font:300 16px/1.55 var(--g);color:#4f544d}
+.vt-tab{margin-top:20px;border-top:1px solid #e5e5e5}
+.vt-tab div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid #e5e5e5;font:500 12.5px var(--g);text-transform:uppercase;letter-spacing:.03em}
+.vt-tab dt{color:#676d64}.vt-tab dd{margin:0;color:#0a0a07;text-align:right}
+.vt-ver{margin-top:22px;height:46px;border:0;border-radius:999px;background:#0a0a07;color:#fff;font:500 15px var(--g);display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer}
+.vt-ver:hover{background:#3a3e39}.vt-ver svg{width:16px;height:16px}
+.vt-pills{margin-top:auto;padding-top:22px;border-top:1px solid #e5e5e5;display:flex;flex-wrap:wrap;gap:6px}
+.vt-pills span{height:28px;padding:0 12px;border-radius:999px;border:1px solid #d4d4d4;background:#fff;display:inline-flex;align-items:center;font:500 11.5px var(--g);text-transform:uppercase;letter-spacing:.03em;color:#3a3e39}
+.vt-pills span::before{content:"+";margin-right:6px;color:#c8aa18}
+.vt-troca{animation:vtTroca .6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes vtTroca{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.vt-faixa{margin-top:clamp(36px,5vw,64px);padding-top:clamp(24px,3vw,40px);border-top:1px solid #e5e5e5;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(24px,4vw,64px)}
+.vt-texto{font:300 clamp(16px,1.25vw,19px)/1.6 var(--g);color:#3a3e39}.vt-texto p+p{margin-top:14px}
+.vt-lado{display:flex;flex-direction:column;gap:28px}
+.vt-bts{display:flex;gap:12px;flex-wrap:wrap}
+.vt-bts a{height:48px;padding:0 26px;border-radius:999px;display:inline-flex;align-items:center;font:500 15px var(--g)}
+.vt-bts a:first-child{background:linear-gradient(135deg,#eff12e 0%,#eff12e 45%,#c8aa18 100%);color:#0a0a07;box-shadow:0 6px 16px rgba(239,241,46,.35)}
+.vt-bts a+a{border:1px solid #d4d4d4;background:#fff;color:#0a0a07}
+.vt-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-top:20px;border-top:1px solid #e5e5e5}
+.vt-nums small{display:block;font:500 11px var(--g);letter-spacing:.12em;text-transform:uppercase;color:#676d64}
+.vt-nums b{display:block;margin-top:6px;font:400 40px/1 var(--t);color:#0a0a07}
+.vt-nums span{display:block;margin-top:6px;font:300 14px var(--g);color:#4f544d}
+@media (max-width:1000px){.vt-grade{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.vt-esq{grid-column:1 / -1;display:grid;grid-template-columns:120px 1fr;align-items:center}.vt-esq .vt-mini{grid-row:span 3}.vt-foto{grid-column:1}.vt-faixa{grid-template-columns:1fr}}
+@media (max-width:700px){.vt-tit{white-space:normal;font-size:clamp(34px,10vw,52px)}.vt-topo{grid-template-columns:1fr auto}.vt-meta{display:none}.vt-selo{width:84px;height:84px}.vt-grade{grid-template-columns:1fr}.vt-esq{grid-template-columns:96px 1fr}.vt-foto{min-height:62vh}.vt-num b{font-size:56px}}
+#vid-cheio{position:fixed;inset:0;z-index:200;background:#0a0a07;display:grid;place-items:center}
+#vid-cheio[hidden]{display:none}
+#vid-cheio video{width:100%;height:100%;object-fit:contain;background:#0a0a07}
+#vid-cheio button{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:12px;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(10,10,7,.6);color:#fff;font:300 22px/1 var(--g);display:grid;place-items:center;cursor:pointer}
+</style>
+</head>
+<body>
+<main class="vt">
+  <header class="vt-topo">
+    <h1 class="vt-tit">Pessoas que <em>constroem</em> com você.</h1>
+    <div class="vt-meta"><span>#equipe</span><span>// Wheff</span></div>
+    <div class="vt-selo" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="vtc" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#vtc">EQUIPE · WHEFF · EQUIPE · WHEFF ·</textPath></text></svg><img src="img/w.png" alt=""></div>
+  </header>
+  <section class="vt-grade" aria-live="polite">
+    <aside class="vt-esq">
+      <div class="vt-mini" id="vt-mini"></div>
+      <div class="vt-pontos" id="vt-pontos"></div>
+      <p class="vt-nota">★★★★★ <b>Wheff</b></p>
+      <div class="vt-num"><b id="vt-num"></b><small id="vt-numtxt"></small></div>
+      <div class="vt-nav"><button type="button" id="vt-ant" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" id="vt-prox" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button><span id="vt-cont">1/6</span></div>
+    </aside>
+    <div class="vt-foto" id="vt-foto" role="img" aria-label="Dupla com camisetas da Wheff" style="background-image:url('img/camisetas-dupla.webp');background-position:50% 55%"></div>
+    <aside class="vt-dir">
+      <p class="vt-func" id="vt-func"></p>
+      <h2 class="vt-nome" id="vt-nome"></h2>
+      <p class="vt-txt" id="vt-txt"></p>
+      <dl class="vt-tab" id="vt-tab"></dl>
+      <button type="button" class="vt-ver" id="vt-ver">Ver trabalhos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <div class="vt-pills" id="vt-pills"></div>
+    </aside>
+  </section>
+  <section class="vt-faixa">
+    <div class="vt-texto">
+    <p>A Wheff é um ecossistema vivo, a união de pessoas escolhidas pelo que fazem bem e pelos valores que compartilham. Cada profissional traz seus pontos fortes e sua experiência em áreas como estratégia, design, copywriting, lançamentos, gestão de tráfego, direção de arte, gestão de atendimento, publicidade e desenvolvimento de software, automações e IA. Trabalhamos em conjunto para que essas habilidades se complementem em cada projeto.</p>
+    <p>Na prática, isso significa que você tem ao seu lado uma equipe que assume responsabilidades, cumpre o que promete e cuida de cada entrega. É com esse compromisso que buscamos fazer da parceria um sucesso e construir, junto com você, uma marca preparada para crescer, construir patrimônio sólido e um legado verdadeiro.</p>
+  </div>
+    <div class="vt-lado">
+      <div class="vt-bts"><a href="#">Fale com a equipe</a><a href="pagina-2.html">Quem somos</a></div>
+      <div class="vt-nums">
+    <div><small>Até</small><b>120+</b><span>entregas feitas</span></div>
+    </div>
+  </section>
+</main>
+<script type="application/json" id="vt-dados">[{"m": 0, "nome": "Ananda Barros", "func": "Fundadora e Coprodutora Digital", "foto": "ananda.webp", "pos": "50% 22%", "mini": "ananda.webp", "num": "7", "numtxt": "anos no marketing digital", "tags": ["Copywriting", "Tráfego pago", "UI/UX e IA"], "txt": "Sou Ananda Barros e trabalho com marketing digital há sete anos. Atuo como copywriter e gestora de tráfego pago e orgânico.", "tab": [["Função", "Fundadora e coprodutora"], ["Áreas", "Copy, tráfego, dados, IA"], ["Formação", "ONM · Métrica Boss · Skillshop"], ["Projetos", "5 trabalhos"]], "pills": ["Nicole Engel", "Dr. Emerson Cruz", "Summit Global 2026", "Daniele Amorim", "Igreja Batista da Graça"], "minipos": "50% 18%"}, {"m": 1, "nome": "Thaís Viturino", "func": "Designer de Identidade Visual e Social Media", "foto": "thais-2.webp", "pos": "52% 20%", "mini": "thais-1.webp", "num": "4", "numtxt": "projetos de identidade e UX/UI", "tags": ["Identidade visual", "Social media", "UX/UI"], "txt": "Hoje, desenvolvo identidades visuais, crio posts, carrosséis e stories e atuo com UX/UI no design de sites e produtos digitais.", "tab": [["Função", "Designer de identidade visual"], ["Áreas", "Posts, carrosséis, stories"], ["Trajetória", "Comunicação, educação e design"], ["Projetos", "4 no Behance"]], "pills": ["Bell Nacif", "Cartas Contempladas", "MeuCon", "ORDO Engenharia", "Flor de Lins"], "minipos": "50% 30%"}, {"m": 2, "nome": "Thaísse Mororó", "func": "Diretora de Arte e Account Manager", "foto": "thaisse.webp", "pos": "55% 28%", "mini": "thaisse.webp", "num": "3", "numtxt": "empresas atendidas", "tags": ["Direção de arte", "Atendimento", "Marketing"], "txt": "Sou Thaísse Mororó, formada em Publicidade e Propaganda, com experiência em comunicação, marketing e atendimento.", "tab": [["Função", "Direção de arte e atendimento"], ["Formação", "Publicidade e Propaganda"], ["Experiência", "Direção de criação"], ["Segmento", "Marketing político"]], "pills": ["Estratégia Evolutiva", "Inovamed", "Santa Diva Boutique"], "minipos": "55% 25%"}, {"m": 3, "nome": "Coutinho Andrade", "func": "Gestor de Tráfego Pago", "foto": "coutinho-2.webp", "pos": "51% 22%", "mini": "coutinho-3.webp", "num": "+30", "numtxt": "modelos de negócio atendidos", "tags": ["Tráfego pago", "Negócios locais", "Visão comercial"], "txt": "Minha trajetória no marketing digital é voltada principalmente para negócios locais.", "tab": [["Função", "Gestor de tráfego pago"], ["Agências", "Lions (BA) · Vertex (SE)"], ["Parceria", "30 Segundos"], ["Base", "Comercial e vendas"]], "pills": ["Farmácias", "Barbearias", "Salões de beleza", "Escolas de inglês", "Cacau Show", "Shopping Sumaré"], "minipos": "52% 24%"}, {"m": 4, "nome": "Josias Batista", "func": "Desenvolvedor Full Stack e Web 3.0", "foto": "josias.webp", "pos": "50% 32%", "mini": "josias.webp", "num": "1º", "numtxt": "lugar no Corredores Digitais Bora Criar 2026", "tags": ["Back-end", "Blockchain", "TI"], "txt": "Constrói a programação por trás das plataformas da Wheff e soluções em blockchain, unindo sistemas rápidos e seguros a contratos inteligentes.", "tab": [["Formação", "Eng. de Software · UFC Quixadá"], ["Atual", "Residente Web 3.0 · Instituto iRede"], ["Experiência", "2+ anos · iDEEDUTEC e SwitchPay"], ["Área", "TI da Wheff"]], "pills": ["Coinconut", "ChainMed", "Kyra"], "minipos": "50% 30%"}, {"m": 5, "nome": "Milene", "func": "Editora de Vídeos para Redes Sociais", "foto": "milene.webp", "pos": "50% 24%", "mini": "milene.webp", "num": "3", "numtxt": "etapas: seleção, montagem e finalização", "tags": ["Reels", "Podcast", "Legendas e cor"], "txt": "Edito vídeos curtos e longos para redes sociais, de Reels e carrosséis em vídeo a episódios de podcast e recortes para divulgação.", "tab": [["Função", "Editora de vídeos"], ["Formatos", "Reels, carrosséis, podcast"], ["Montagem", "Ritmo e respiros"], ["Finalização", "Legendas, áudio e cor"]], "pills": ["Reels", "Carrosséis em vídeo", "Podcast", "Recortes"], "minipos": "50% 22%"}]</script>
+<section class="perfil pv" id="perfil-0" hidden aria-label="Ananda Barros">
+  <div class="pv-fundo" style="background-image:url('img/cli-nicole.webp')"></div><div class="pv-fundo" style="background-image:url('img/cli-emerson.webp')"></div><div class="pv-fundo" style="background-image:url('img/cli-summit.webp')"></div><div class="pv-fundo" style="background-image:url('img/cli-daniele.webp')"></div><div class="pv-fundo" style="background-image:url('img/cli-ibgraca.webp')"></div><div class="pv-veu"></div><div class="pv-rolagem" aria-hidden="true"><i></i></div>
+  <header class="pv-topo"><button type="button" class="voltar pv-voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Voltar<span class="pv-v2"> para a equipe</span></button>
+    <img class="pv-logo" src="img/wordmark-claro.png" alt="Wheff"></header>
+  <div class="pv-esq">
+    <div class="pv-eu"><span class="pv-foto"></span><div><b>Ananda Barros</b><small>Fundadora e Coprodutora Digital</small></div></div>
+    <p class="pv-sub"><i></i><span id="pv-sub"></span></p>
+    <h2 class="pv-nome" id="pv-nome"></h2>
+    <p class="pv-txt" id="pv-txt"></p>
+    <div class="pv-bts"><span class="pv-bola"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span><button type="button" class="pv-linha-bt pv-sobre-bt">Sobre a Ananda</button></div>
+  </div>
+  <div class="pv-trilho"><div class="pv-cards" id="pv-cards"><button type="button" class="pv-card" data-i="0"><img src="img/insta-nicole.webp" alt="Perfil de Nicole Engel no Instagram"><span class="pv-leg"><small>Pastora e mentora</small><b>Nicole Engel</b></span></button><button type="button" class="pv-card" data-i="1"><img src="img/insta-emerson.webp" alt="Perfil de Dr. Emerson Cruz no Instagram"><span class="pv-leg"><small>Médico</small><b>Dr. Emerson Cruz</b></span></button><button type="button" class="pv-card" data-i="2"><img src="img/insta-summit.webp" alt="Perfil do Summit Global no Instagram"><span class="pv-leg"><small>Evento</small><b>Summit Global 2026</b></span></button><button type="button" class="pv-card" data-i="3"><img src="img/insta-daniele.webp" alt="Perfil de Daniele Amorim no Instagram"><span class="pv-leg"><small>Cristã e terapeuta</small><b>Daniele Amorim</b></span></button><button type="button" class="pv-card" data-i="4"><img src="img/insta-ibgraca.webp" alt="Perfil de Igreja Batista da Graça no Instagram"><span class="pv-leg"><small>Salvador, Bahia</small><b>Igreja Batista da Graça</b></span></button></div></div>
+  <div class="pv-nav"><button type="button" class="pv-seta" id="pv-ant" aria-label="Trabalho anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" class="pv-seta" id="pv-prox" aria-label="Próximo trabalho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+    <span class="pv-barra"><i id="pv-prog"></i></span><span class="pv-num" id="pv-num">01</span></div>
+  <div class="pv-bio" id="pv-bio" hidden><div class="pv-bio-caixa"><button type="button" class="pv-bio-x" aria-label="Fechar">&times;</button>
+    <h3>Ananda Barros</h3>
+    <p>Sou Ananda Barros e trabalho com marketing digital há sete anos. Atuo como copywriter e gestora de tráfego pago e orgânico. Também trabalho com análise de dados, gestão de automações, design de interfaces e experiência do usuário (UI/UX) e criação de soluções com inteligência artificial como AI builder.</p>
+    <p>Minha formação inclui marketing digital e copywriting pelo O Novo Mercado (ONM) maior escola de marketing digital, análise de dados pela Métrica Boss maior escola de dados do mercado digital, além de treinamento em Google Ads pela Skillshop, do Google.</p>
+    <p>Meu trabalho faz parte de uma convicção que levo para a minha profissão: posso servir a Deus com aquilo que sei fazer. Minha fé em Jesus orienta a maneira como escrevo, vendo e conduzo cada parceria. Quero que os princípios que busco viver no dia a dia apareçam tanto na mensagem que chega ao público quanto no cuidado com as pessoas ao longo do projeto.</p>
+  </div></div>
+  <script type="application/json" id="pv-dados">[{"nome": "Nicole Engel", "sub": "Pastora e mentora", "txt": "Com Nicole Engel, usei o copywriting e a criação de uma landing page para fortalecer seu posicionamento, apoiar seu crescimento e aproximá-la do público."}, {"nome": "Dr. Emerson Cruz", "sub": "Médico", "txt": "No projeto do Dr. Emerson, escrevi as copys e criei a landing page para a venda online de ingressos físicos."}, {"nome": "Summit Global 2026", "sub": "Evento", "txt": "Também trabalhei com a venda de ingressos físicos no Summit Global 2026 + de 150 ingressos vendidos em 1 semana."}, {"nome": "Daniele Amorim", "sub": "Cristã e terapeuta", "txt": "Com Daniele Amorim, fiz consultoria de marketing e participei da criação do seu produto digital."}, {"nome": "Igreja Batista da Graça", "sub": "Salvador, Bahia", "txt": "Na Igreja Batista da Graça, servi no marketing digital, trabalhando com posicionamento e escrevendo textos voltados ao crescimento e às vendas."}]</script>
+</section>
+<section class="perfil pv" id="perfil-1" hidden aria-label="Thaís Viturino">
+  <div class="pv-fundo" style="background-image:url('img/thais-bell-a.webp')"></div><div class="pv-fundo" style="background-image:url('img/thais-cartas-a.webp')"></div><div class="pv-fundo" style="background-image:url('img/thais-meucon-a.webp')"></div><div class="pv-fundo" style="background-image:url('img/thais-ordo-a.webp')"></div><div class="pv-veu"></div><div class="pv-rolagem" aria-hidden="true"><i></i></div>
+  <header class="pv-topo"><button type="button" class="voltar pv-voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Voltar<span class="pv-v2"> para a equipe</span></button>
+    <img class="pv-logo" src="img/wordmark-claro.png" alt="Wheff"></header>
+  <div class="pv-esq">
+    <div class="pv-eu"><span class="pv-foto" style="background:url('img/thais-2.webp') 52% 26%/260% no-repeat"></span><div><b>Thaís Viturino</b><small>Designer de Identidade Visual e Social Media</small></div></div>
+    <p class="pv-sub"><i></i><span id="pv-sub"></span></p>
+    <h2 class="pv-nome" id="pv-nome"></h2>
+    <p class="pv-txt" id="pv-txt"></p>
+    <div class="pv-bts"><span class="pv-bola"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span><button type="button" class="pv-linha-bt pv-sobre-bt">Sobre a Thaís</button></div>
+  </div>
+  <div class="pv-dobra"><img class="dobra-img" alt="Mockup do projeto" src="img/mock-bell.webp?v=2"></div>
+    <div class="tela-d b"><div class="pe"></div><div class="chao"></div></div>
+  </div></div>
+  <div class="pv-trilho pv-trilho-vazio"><div class="pv-cards" id="pv-cards"></div></div>
+  <div class="pv-nav"><button type="button" class="pv-seta" id="pv-ant" aria-label="Trabalho anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" class="pv-seta" id="pv-prox" aria-label="Próximo trabalho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+    <span class="pv-barra"><i id="pv-prog"></i></span><span class="pv-num" id="pv-num">01</span></div>
+  <div class="pv-bio" id="pv-bio" hidden><div class="pv-bio-caixa"><button type="button" class="pv-bio-x" aria-label="Fechar">&times;</button>
+    <h3>Thaís Viturino</h3>
+    <p>Minha trajetória passou pela comunicação e pela educação antes de chegar ao design. Hoje, desenvolvo identidades visuais, crio posts, carrosséis e stories e atuo com UX/UI no design de sites e produtos digitais.</p>
+    <p>Em cada projeto, começo pelo que a marca precisa comunicar e para quem. Na Flor de Lins, por exemplo, trabalhei na identidade visual e criei posts e carrosséis para apresentar as peças artesanais do ateliê, valorizar seus detalhes e divulgar encomendas. A aquarela também faz parte da minha trajetória e influencia meu olhar para cor e composição.</p>
+  </div></div>
+  <script type="application/json" id="pv-dados">[{"nome": "Bell Nacif", "sub": "Website Experience · UX/UI", "txt": "Minha trajetória passou pela comunicação e pela educação antes de chegar ao design. Hoje, desenvolvo identidades visuais, crio posts, carrosséis e stories e atuo com UX/UI no design de sites e produtos digitais.", "a": "thais-bell-a", "b": "thais-bell-b", "cover": false, "mock": "mock-bell"}, {"nome": "Cartas Contempladas", "sub": "Redesign de site · UX/UI", "txt": "Minha trajetória passou pela comunicação e pela educação antes de chegar ao design. Hoje, desenvolvo identidades visuais, crio posts, carrosséis e stories e atuo com UX/UI no design de sites e produtos digitais.", "a": "thais-cartas-a", "b": "thais-cartas-b", "cover": false, "mock": "mock-cartas"}, {"nome": "MeuCon", "sub": "Plataforma de consórcios orientada à decisão", "txt": "Minha trajetória passou pela comunicação e pela educação antes de chegar ao design. Hoje, desenvolvo identidades visuais, crio posts, carrosséis e stories e atuo com UX/UI no design de sites e produtos digitais.", "a": "thais-meucon-a", "b": "thais-meucon-b", "cover": false, "mock": "mock-meucon"}, {"nome": "ORDO Engenharia", "sub": "Identidade visual", "txt": "Em cada projeto, começo pelo que a marca precisa comunicar e para quem. Na Flor de Lins, por exemplo, trabalhei na identidade visual e criei posts e carrosséis para apresentar as peças artesanais do ateliê, valorizar seus detalhes e divulgar encomendas. A aquarela também faz parte da minha trajetória e influencia meu olhar para cor e composição.", "a": "thais-ordo-a", "b": "thais-ordo-b", "cover": true, "mock": "mock-ordo"}]</script>
+</section>
+<section class="perfil pv" id="perfil-2" hidden aria-label="Thaísse Mororó">
+  <div class="pv-fundo" style="background:radial-gradient(circle at 70% 40%,#3a3e39,#0d0e0c 75%)"></div><div class="pv-fundo" style="background:radial-gradient(circle at 70% 40%,#696a00,#0d0e0c 75%)"></div><div class="pv-fundo" style="background:radial-gradient(circle at 70% 40%,#eff12e,#0d0e0c 75%)"></div><div class="pv-veu"></div><div class="pv-rolagem" aria-hidden="true"><i></i></div>
+  <header class="pv-topo"><button type="button" class="voltar pv-voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Voltar<span class="pv-v2"> para a equipe</span></button>
+    <img class="pv-logo" src="img/wordmark-claro.png" alt="Wheff"></header>
+  <div class="pv-esq">
+    <div class="pv-eu"><span class="pv-foto" style="background:url('img/thaisse.webp') 59% 25%/230% no-repeat"></span><div><b>Thaísse Mororó</b><small>Diretora de Arte e Account Manager</small></div></div>
+    <p class="pv-sub"><i></i><span id="pv-sub"></span></p>
+    <h2 class="pv-nome" id="pv-nome"></h2>
+    <p class="pv-txt" id="pv-txt"></p>
+    <div class="pv-bts"><span class="pv-bola"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span><button type="button" class="pv-linha-bt pv-sobre-bt">Sobre a Thaísse</button></div>
+  </div>
+  <div class="pv-trilho"><div class="pv-cards" id="pv-cards"><button type="button" class="pv-card" data-i="0" style="background:#3a3e39"><span class="pv-sg" style="color:#eff12e">EE</span><span class="pv-leg"><small>Agência de marketing político · Direção de criação</small><b>Estratégia Evolutiva</b></span></button><button type="button" class="pv-card" data-i="1" style="background:#696a00"><span class="pv-sg" style="color:#f7f4ed">IN</span><span class="pv-leg"><small>Distribuidora hospitalar · Marketing</small><b>Inovamed</b></span></button><button type="button" class="pv-card" data-i="2" style="background:#eff12e"><span class="pv-sg" style="color:#141513">SD</span><span class="pv-leg"><small>Moda · Marketing e vendas</small><b>Santa Diva Boutique</b></span></button></div></div>
+  <div class="pv-nav"><button type="button" class="pv-seta" id="pv-ant" aria-label="Trabalho anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" class="pv-seta" id="pv-prox" aria-label="Próximo trabalho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+    <span class="pv-barra"><i id="pv-prog"></i></span><span class="pv-num" id="pv-num">01</span></div>
+  <div class="pv-bio" id="pv-bio" hidden><div class="pv-bio-caixa"><button type="button" class="pv-bio-x" aria-label="Fechar">&times;</button>
+    <h3>Thaísse Mororó</h3>
+    <p>Sou Thaísse Mororó, formada em Publicidade e Propaganda, com experiência em comunicação, marketing e atendimento. Como diretora de criação em uma agência de marketing político, participei do desenvolvimento de estratégias, campanhas e projetos criativos. Minha experiência no relacionamento com clientes também faz parte da forma como trabalho: valorizo a comunicação clara e a troca de ideias com a equipe ao longo do processo criativo.</p>
+  </div></div>
+  <script type="application/json" id="pv-dados">[{"nome": "Estratégia Evolutiva", "sub": "Agência de marketing político · Direção de criação", "txt": "Como diretora de criação em uma agência de marketing político, participei do desenvolvimento de estratégias, campanhas e projetos criativos."}, {"nome": "Inovamed", "sub": "Distribuidora hospitalar · Marketing", "txt": "Na Inovamed, uma distribuidora hospitalar, trabalhei no marketing."}, {"nome": "Santa Diva Boutique", "sub": "Moda · Marketing e vendas", "txt": "Na Santa Diva Boutique, eu era o marketing e também as vendas: cuidava de tudo."}]</script>
+</section>
+<section class="perfil pv" id="perfil-4" hidden aria-label="Josias Batista">
+  <div class="pv-fundo" style="background-image:url('img/josias.webp')"></div><div class="pv-fundo" style="background-image:url('img/josias.webp')"></div><div class="pv-fundo" style="background-image:url('img/josias.webp')"></div><div class="pv-veu"></div><div class="pv-rolagem" aria-hidden="true"><i></i></div>
+  <header class="pv-topo"><button type="button" class="voltar pv-voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Voltar<span class="pv-v2"> para a equipe</span></button>
+    <img class="pv-logo" src="img/wordmark-claro.png" alt="Wheff"></header>
+  <div class="pv-esq">
+    <div class="pv-eu"><span class="pv-foto" style="background:url('img/josias.webp') 50% 32%/220% no-repeat"></span><div><b>Josias Batista</b><small>Desenvolvedor Full Stack e Web 3.0</small></div></div>
+    <p class="pv-sub"><i></i><span id="pv-sub"></span></p>
+    <h2 class="pv-nome" id="pv-nome"></h2>
+    <p class="pv-txt" id="pv-txt"></p>
+    <div class="pv-bts"><span class="pv-bola"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span><button type="button" class="pv-linha-bt pv-sobre-bt">Sobre o Josias</button></div>
+  </div>
+  <div class="pv-dobra"><img class="dobra-img" alt="Mockup do projeto" src="img/mock-jos-coin.webp"></div>
+    <div class="tela-d b"><div class="pe"></div><div class="chao"></div></div>
+  </div></div>
+  <div class="pv-trilho pv-trilho-vazio"><div class="pv-cards" id="pv-cards"></div></div>
+  <div class="pv-nav"><button type="button" class="pv-seta" id="pv-ant" aria-label="Trabalho anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" class="pv-seta" id="pv-prox" aria-label="Próximo trabalho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+    <span class="pv-barra"><i id="pv-prog"></i></span><span class="pv-num" id="pv-num">01</span></div>
+  <div class="pv-bio" id="pv-bio" hidden><div class="pv-bio-caixa"><button type="button" class="pv-bio-x" aria-label="Fechar">&times;</button>
+    <h3>Josias Batista</h3>
+    <p>Sou Josias Batista e desenvolvo os produtos digitais da Wheff, como aplicativos e plataformas de vendas e de comunidade, além de ser responsável pela área de tecnologia da informação (TI). Hoje também sou Desenvolvedor Residente em Web 3.0 no Instituto iRede e estudo Engenharia de Software na UFC, campus Quixadá.</p>
+    <p>Tenho mais de 2 anos de experiência construindo a parte que não aparece, mas faz tudo funcionar: sistemas rápidos e seguros (Node.js, Java, NestJS, PostgreSQL) e soluções em blockchain com contratos inteligentes (Solidity, Rust, redes Stellar e Ethereum). Em empresas como iDEEDUTEC e SwitchPay, liderei a reestruturação de sistemas essenciais e integrei serviços financeiros que processam dados sensíveis em tempo real.</p>
+    <p>Em hackathons, conquistei o 1º lugar no Corredores Digitais Bora Criar 2026 com a Coinconut, startup criada no ImpactLedger Hackathon Web3 RESTIC 29; desenvolvi a EloCiv, plataforma de credenciais cívicas, no UNICEF Youth Challenge; e fiquei em 3º lugar na Trilha Web 3.0 do hackathon XRP Ledger 2024. Meu foco é usar engenharia de software rigorosa para criar soluções seguras que resolvam problemas reais.</p>
+  </div></div>
+  <script type="application/json" id="pv-dados">[{"nome": "Coinconut", "sub": "Plataforma web · produtor, fábrica e comprador", "txt": "Startup que criamos no ImpactLedger Hackathon Web3 RESTIC 29 e que conquistou o 1º lugar no Corredores Digitais Bora Criar 2026. A plataforma conecta produtor, fábrica e comprador em um sistema de logística reversa com foco ESG, usando tecnologia Ethereum e pagamento via PIX.", "mock": "mock-jos-coin"}, {"nome": "ChainMed", "sub": "Prescrições médicas na blockchain", "txt": "Prescrições médicas registradas na blockchain, para que cada receita seja segura, verificável e não possa ser alterada depois de emitida. Aqui uni a programação por trás do sistema a contratos inteligentes.", "mock": "mock-jos-med"}, {"nome": "Kyra", "sub": "Assistente de investimentos com IA", "txt": "Assistente de investimentos com inteligência artificial. Desenvolvi a programação por trás dela, que organiza as informações e faz cada recurso funcionar de forma rápida e segura.", "mock": "mock-jos-kyra"}]</script>
+</section>
+<section class="perfil pv" id="perfil-3" hidden aria-label="Coutinho Andrade">
+  <div class="pv-fundo" style="background-image:url('img/coutinho-1.webp')"></div><div class="pv-fundo" style="background-image:url('img/coutinho-2.webp')"></div><div class="pv-fundo" style="background-image:url('img/coutinho-3.webp')"></div><div class="pv-fundo" style="background-image:url('img/coutinho-2.webp')"></div><div class="pv-veu"></div><div class="pv-rolagem" aria-hidden="true"><i></i></div>
+  <header class="pv-topo"><button type="button" class="voltar pv-voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Voltar<span class="pv-v2"> para a equipe</span></button>
+    <img class="pv-logo" src="img/wordmark-claro.png" alt="Wheff"></header>
+  <div class="pv-esq">
+    <div class="pv-eu"><span class="pv-foto" style="background:url('img/coutinho-3.webp') 53% 31%/260% no-repeat"></span><div><b>Coutinho Andrade</b><small>Gestor de Tráfego Pago</small></div></div>
+    <p class="pv-sub"><i></i><span id="pv-sub"></span></p>
+    <h2 class="pv-nome" id="pv-nome"></h2>
+    <p class="pv-txt" id="pv-txt"></p>
+    <div class="pv-bts"><span class="pv-bola"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span><button type="button" class="pv-linha-bt pv-sobre-bt">Sobre o Coutinho</button></div>
+  </div>
+  <div class="pv-trilho"><div class="pv-cards" id="pv-cards"><button type="button" class="pv-card" data-i="0"><img src="img/coutinho-1.webp" alt="Coutinho Andrade" style="object-position:45% 34%;transform:scale(1.7);transform-origin:43% 36%"><span class="pv-leg"><small>Agências · Salvador (BA) e Aracaju (SE)</small><b>Lions e Vertex</b></span></button><button type="button" class="pv-card" data-i="1"><img src="img/coutinho-2.webp" alt="Coutinho Andrade" style="object-position:51% 30%;transform:scale(1.55);transform-origin:51% 33%"><span class="pv-leg"><small>Parceria atual</small><b>30 Segundos</b></span></button><button type="button" class="pv-card" data-i="2"><img src="img/coutinho-3.webp" alt="Coutinho Andrade" style="object-position:52% 30%;transform:scale(1.55);transform-origin:52% 33%"><span class="pv-leg"><small>Antes do tráfego pago</small><b>Visão comercial</b></span></button><button type="button" class="pv-card" data-i="3"><span class="pv-sg" style="font-size:44px;padding:16px;text-align:center;line-height:1">30+<br><small style="font:300 14px var(--g);color:#f2e7c7">modelos de negócio atendidos</small></span><span class="pv-leg"><small>Tráfego pago</small><b>Objetivo</b></span></button></div></div>
+  <div class="pv-nav"><button type="button" class="pv-seta" id="pv-ant" aria-label="Trabalho anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" class="pv-seta" id="pv-prox" aria-label="Próximo trabalho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+    <span class="pv-barra"><i id="pv-prog"></i></span><span class="pv-num" id="pv-num">01</span></div>
+  <div class="pv-bio" id="pv-bio" hidden><div class="pv-bio-caixa"><button type="button" class="pv-bio-x" aria-label="Fechar">&times;</button>
+    <h3>Coutinho Andrade</h3>
+    <p>Minha trajetória no marketing digital é voltada principalmente para negócios locais. Já trabalhei com as agências Lions, de Salvador (BA), e Vertex, de Aracaju (SE), participando de projetos para diferentes segmentos, como farmácias, barbearias, salões de beleza, escolas de inglês, Cacau Show e Shopping Sumaré, entre outros, totalizando mais de 30 modelos de negócio atendidos.</p>
+    <p>Atualmente, também trabalho em parceria com a 30 Segundos, atendendo empresas locais, como uma loja de autopeças.</p>
+    <p>Antes de ingressar no tráfego pago, construí experiência na área comercial e de vendas, conhecimento que hoje contribui para minha visão estratégica, principalmente na compreensão do comportamento do consumidor e na geração de oportunidades de negócio.</p>
+    <p>Meu objetivo é ajudar empresas a fortalecer sua presença digital, atrair novos clientes e crescer por meio do tráfego pago.</p>
+  </div></div>
+  <script type="application/json" id="pv-dados">[{"nome": "Lions e Vertex", "sub": "Agências · Salvador (BA) e Aracaju (SE)", "txt": "Minha trajetória no marketing digital é voltada principalmente para negócios locais. Já trabalhei com as agências Lions, de Salvador (BA), e Vertex, de Aracaju (SE), participando de projetos para diferentes segmentos, como farmácias, barbearias, salões de beleza, escolas de inglês, Cacau Show e Shopping Sumaré, entre outros, totalizando mais de 30 modelos de negócio atendidos."}, {"nome": "30 Segundos", "sub": "Parceria atual", "txt": "Atualmente, também trabalho em parceria com a 30 Segundos, atendendo empresas locais, como uma loja de autopeças."}, {"nome": "Visão comercial", "sub": "Antes do tráfego pago", "txt": "Antes de ingressar no tráfego pago, construí experiência na área comercial e de vendas, conhecimento que hoje contribui para minha visão estratégica, principalmente na compreensão do comportamento do consumidor e na geração de oportunidades de negócio."}, {"nome": "Objetivo", "sub": "Tráfego pago", "txt": "Meu objetivo é ajudar empresas a fortalecer sua presença digital, atrair novos clientes e crescer por meio do tráfego pago."}]</script>
+</section>
+<section class="perfil pv" id="perfil-5" hidden aria-label="Milene">
+  <div class="pv-fundo" style="background-image:url('img/milene.webp')"></div><div class="pv-fundo" style="background-image:url('img/milene.webp')"></div><div class="pv-fundo" style="background-image:url('img/milene.webp')"></div><div class="pv-veu"></div><div class="pv-rolagem" aria-hidden="true"><i></i></div>
+  <header class="pv-topo"><button type="button" class="voltar pv-voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Voltar<span class="pv-v2"> para a equipe</span></button>
+    <img class="pv-logo" src="img/wordmark-claro.png" alt="Wheff"></header>
+  <div class="pv-esq">
+    <div class="pv-eu"><span class="pv-foto" style="background:url('img/milene.webp') 50% 28%/230% no-repeat"></span><div><b>Milene</b><small>Editora de Vídeos para Redes Sociais</small></div></div>
+    <p class="pv-sub"><i></i><span id="pv-sub"></span></p>
+    <h2 class="pv-nome" id="pv-nome"></h2>
+    <p class="pv-txt" id="pv-txt"></p>
+    <div class="pv-bts"><span class="pv-bola"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span><button type="button" class="pv-linha-bt pv-sobre-bt">Sobre a Milene</button></div>
+  </div>
+  <div class="pv-trilho"><div class="pv-cards" id="pv-cards"><button type="button" class="pv-card" data-i="0"><video src="img/milene-v1.mp4" poster="img/milene-v1.jpg" muted autoplay loop playsinline webkit-playsinline preload="auto" disablepictureinpicture style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video><span class="pv-leg"><small>Antes e depois da edição</small><b>Reels</b></span></button><button type="button" class="pv-card" data-i="1"><video src="img/milene-v2.mp4" poster="img/milene-v2.jpg" muted autoplay loop playsinline webkit-playsinline preload="auto" disablepictureinpicture style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video><span class="pv-leg"><small>Seleção, corte e ritmo</small><b>Montagem</b></span></button><button type="button" class="pv-card" data-i="2"><video src="img/milene-v3.mp4" poster="img/milene-v3.jpg" muted autoplay loop playsinline webkit-playsinline preload="auto" disablepictureinpicture style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video><span class="pv-leg"><small>Recorte para divulgação</small><b>Podcast</b></span></button></div></div>
+  <div class="pv-nav"><button type="button" class="pv-seta" id="pv-ant" aria-label="Trabalho anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" class="pv-seta" id="pv-prox" aria-label="Próximo trabalho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+    <span class="pv-barra"><i id="pv-prog"></i></span><span class="pv-num" id="pv-num">01</span></div>
+  <div class="pv-bio" id="pv-bio" hidden><div class="pv-bio-caixa"><button type="button" class="pv-bio-x" aria-label="Fechar">&times;</button>
+    <h3>Milene</h3>
+    <p>Edito vídeos curtos e longos para redes sociais, de Reels e carrosséis em vídeo a episódios de podcast e recortes para divulgação.</p>
+    <p>Meu trabalho começa na seleção, quando seleciono os melhores takes e organizo a sequência. Na montagem, corto repetições, ajusto o ritmo das falas e preservo os respiros que deixam a conversa natural. Na finalização, sincronizo as legendas, ajusto o áudio e corrijo a cor e a exposição para equilibrar a iluminação entre os takes. Também adapto o enquadramento ao formato de cada publicação.</p>
+  </div></div>
+  <script type="application/json" id="pv-dados">[{"nome": "Reels", "sub": "Antes e depois da edição", "txt": "Edito vídeos curtos e longos para redes sociais, de Reels e carrosséis em vídeo a episódios de podcast e recortes para divulgação."}, {"nome": "Montagem", "sub": "Seleção, corte e ritmo", "txt": "Meu trabalho começa na seleção, quando seleciono os melhores takes e organizo a sequência. Na montagem, corto repetições, ajusto o ritmo das falas e preservo os respiros que deixam a conversa natural."}, {"nome": "Podcast", "sub": "Recorte para divulgação", "txt": "Na finalização, sincronizo as legendas, ajusto o áudio e corrijo a cor e a exposição para equilibrar a iluminação entre os takes. Também adapto o enquadramento ao formato de cada publicação."}]</script>
+</section>
+<a class="anterior" href="pagina-2.html" aria-label="Página anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+<a class="proxima" href="pagina-4.html" aria-label="Próxima página"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<script>
+  const tela=document.getElementById('tela');
+  function ajusta(){}
+  // cada foto abre a página da pessoa; Voltar ou Esc fecha
+  const fecha=p=>{ p.querySelectorAll('video').forEach(v=>v.pause()); p.hidden=true; document.documentElement.classList.remove('trava'); document.scrollingElement.scrollTop=0; ajusta(); };
+  // vitrine: uma pessoa por vez, troca sozinha a cada 10 s
+  (()=>{ const M=JSON.parse(document.getElementById('vt-dados').textContent); const $=id=>document.getElementById(id); const ICO=["<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/></svg>", "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M13 2 4 14h7l-1 8 9-12h-7z\"/></svg>", "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 6.5-7 11-7 11z\"/></svg>"];
+    let at=0,tm=null; const pontos=$('vt-pontos');
+    M.forEach((x,k)=>{ const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label',x.nome); b.onclick=()=>{ vai(k); roda(); }; pontos.appendChild(b); });
+    const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    function vai(i){ at=(i+M.length)%M.length; const x=M[at];
+      
+      $('vt-mini').style.backgroundImage="url('img/"+x.mini+"')"; $('vt-mini').style.backgroundPosition=x.minipos;
+      $('vt-num').textContent=x.num; $('vt-numtxt').textContent=x.numtxt; $('vt-cont').textContent=(at+1)+'/'+M.length;
+      $('vt-func').textContent=x.func; $('vt-nome').textContent=x.nome; $('vt-txt').textContent=x.txt;
+      $('vt-tab').innerHTML=x.tab.map(([a,b])=>'<div><dt>'+esc(a)+'</dt><dd>'+esc(b)+'</dd></div>').join('');
+      
+      $('vt-pills').innerHTML=x.pills.map(t=>'<span>'+esc(t)+'</span>').join('');
+      $('vt-ver').dataset.m=x.m;
+      [...pontos.children].forEach((b,k)=>b.setAttribute('aria-current',String(k===at)));
+      ['vt-dir','vt-num','vt-mini'].forEach(id=>{ const e=$(id)||document.querySelector('.'+id); if(!e) return; e.classList.remove('vt-troca'); void e.offsetWidth; e.classList.add('vt-troca'); }); }
+    function roda(){ clearInterval(tm); tm=setInterval(()=>{ if(!document.querySelector('.perfil:not([hidden])')) vai(at+1); },10000); }
+    $('vt-prox').onclick=()=>{ vai(at+1); roda(); }; $('vt-ant').onclick=()=>{ vai(at-1); roda(); };
+    addEventListener('keydown',e=>{ if(document.querySelector('.perfil:not([hidden])')) return; if(e.key==='ArrowRight'){ vai(at+1); roda(); } if(e.key==='ArrowLeft'){ vai(at-1); roda(); } });
+    $('vt-ver').onclick=()=>{ const p=document.getElementById('perfil-'+$('vt-ver').dataset.m); if(!p) return; p.hidden=false; p.scrollTop=0; document.documentElement.classList.add('trava'); p.querySelector('.voltar').focus({preventScroll:true}); };
+    vai(0); roda(); })();
+  document.querySelectorAll('.perfil .voltar').forEach(v=>v.onclick=()=>fecha(v.closest('.perfil')));
+  addEventListener('keydown',e=>{ if(e.key==='Escape') document.querySelectorAll('.perfil:not([hidden])').forEach(fecha); });
+
+  // carrossel da página da pessoa: troca sozinho a cada 10 s
+  // iPhone precisa baixar o vídeo inteiro antes de tocar (o servidor não entrega em partes): carrega como arquivo local
+  const vidCache={};
+  function vidLocal(url){ if(!vidCache[url]) vidCache[url]=fetch(url).then(r=>r.blob()).then(b=>URL.createObjectURL(b.type?b:new Blob([b],{type:'video/mp4'}))).catch(()=>url); return vidCache[url]; }
+  document.querySelectorAll('.pv-card video').forEach(v=>{ const u=v.getAttribute('src'); v.dataset.orig=u; vidLocal(u).then(b=>{ if(b!==u){ v.src=b; v.muted=true; v.play().catch(()=>{}); } }); });
+  function telaCheia(v){ let o=document.getElementById('vid-cheio'); if(!o){ o=document.createElement('div'); o.id='vid-cheio'; o.innerHTML='<video playsinline webkit-playsinline controls loop></video><button type="button" aria-label="Fechar">&times;</button>'; document.body.appendChild(o);
+      o.querySelector('button').onclick=()=>{ const x=o.querySelector('video'); x.pause(); o.hidden=true; }; }
+    const x=o.querySelector('video'); x.src=v.src; x.muted=false; o.hidden=false; x.play().catch(()=>{ x.muted=true; x.play().catch(()=>{}); }); }
+  function dobra(p,d){ const im=p.querySelector('.dobra-img'); im.src='img/'+d.mock+'.webp?v=3'; im.classList.remove('dobra-troca'); void im.offsetWidth; im.classList.add('dobra-troca'); }
+  document.querySelectorAll('.perfil.pv').forEach(p=>{ const m=p.id.split('-')[1];
+    const D=JSON.parse(p.querySelector('#pv-dados').textContent), fundos=[...p.querySelectorAll('.pv-fundo')], cards=[...p.querySelectorAll('.pv-card')];
+    const nome=p.querySelector('#pv-nome'), sub=p.querySelector('#pv-sub'), txt=p.querySelector('#pv-txt'), num=p.querySelector('#pv-num'), prog=p.querySelector('#pv-prog'), trilho=p.querySelector('#pv-cards');
+    let at=0, timer=null;
+    function mostra(i){ at=(i+D.length)%D.length; const d=D[at];
+      nome.textContent=d.nome; sub.textContent=d.sub; txt.textContent=d.txt; num.textContent=String(at+1).padStart(2,'0');
+      [nome,sub.parentElement,txt].forEach(e=>{ e.classList.remove('pv-troca'); void e.offsetWidth; e.classList.add('pv-troca'); });
+      fundos.forEach((f,k)=>f.classList.toggle('on',k===at)); cards.forEach((c,k)=>c.classList.toggle('on',k===at)); cards.forEach(c=>{ const v=c.querySelector('video'); if(v){ v.muted=true; v.play().catch(()=>{}); } });
+      if(p.querySelector('.pv-dobra')) dobra(p,d); if(!cards.length){} else if(innerWidth<=860){ trilho.style.transform=''; const w=trilho.parentElement; w.scrollTo({left:Math.max(0,cards[at].offsetLeft-16),behavior:'smooth'}); } else { const passo=cards[0].offsetWidth+18; trilho.style.transform='translateX('+(-at*passo)+'px)'; }
+      prog.classList.remove('anda'); void prog.offsetWidth; prog.classList.add('anda'); }
+    function roda(){ clearInterval(timer); timer=setInterval(()=>{ if(!p.hidden && p.querySelector('.pv-bio').hidden) mostra(at+1); },10000); }
+    p.querySelector('#pv-prox').onclick=()=>{ mostra(at+1); roda(); };
+    p.querySelector('#pv-ant').onclick=()=>{ mostra(at-1); roda(); };
+    cards.forEach((c,k)=>c.onclick=()=>{ mostra(k); roda(); const v=c.querySelector('video'); if(v){ v.muted=true; v.play().catch(()=>{}); if(innerWidth<=860) telaCheia(v); } });
+    p.querySelectorAll('.pv-sobre-bt').forEach(b=>b.onclick=()=>{ p.querySelector('.pv-bio').hidden=false; });
+    p.querySelector('.pv-bio-x').onclick=()=>{ p.querySelector('.pv-bio').hidden=true; };
+    p.querySelector('.pv-bio').onclick=e=>{ if(e.target.classList.contains('pv-bio')) e.target.hidden=true; };
+    // barra lateral própria (o celular esconde a barra do navegador)
+    const rl=p.querySelector('.pv-rolagem i'); const barra=()=>{ const h=p.clientHeight, t=p.scrollHeight; const th=Math.max(40,h*h/t); rl.parentElement.style.opacity=t>h+2?1:0; rl.style.height=th+'px'; rl.style.transform='translateY('+((h-24-th)*(p.scrollTop/Math.max(1,t-h)))+'px)'; };
+    p.addEventListener('scroll',barra); addEventListener('resize',barra); setTimeout(barra,800);
+    document.getElementById('vt-ver').addEventListener('click',()=>{ if(document.getElementById('vt-ver').dataset.m===m){ mostra(0); roda(); } });
+    addEventListener('resize',()=>{ if(!p.hidden) mostra(at); });
+  });
+</script>
+</body>
+</html>
