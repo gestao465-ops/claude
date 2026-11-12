@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wheff Studio · Obrigada</title>
+<style>
+@font-face{font-family:"Editorial";src:url("fonts/editorial-regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Editorial";src:url("fonts/editorial-italic.otf") format("opentype");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Editorial";src:url("fonts/editorial-ultralight.otf") format("opentype");font-weight:200;font-style:normal;font-display:swap}
+@font-face{font-family:"Editorial";src:url("fonts/editorial-ultralight-italic.otf") format("opentype");font-weight:200;font-style:italic;font-display:swap}
+@font-face{font-family:"Recoleta";src:url("fonts/recoleta-light.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Recoleta";src:url("fonts/recoleta-medium.woff2") format("woff2");font-weight:500;font-display:swap}
+:root{--lima:#eff12e;--oliva:#696a00;--dourado:#c8aa18;--g:"Recoleta",Georgia,serif;--t:"Editorial",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;background:#f6f8f4}
+body{color:#3a3e39;font-family:var(--g)}
+a{color:inherit;text-decoration:none}
+.ob{min-height:100vh;max-width:1600px;margin:0 auto;padding:clamp(20px,3vw,40px) clamp(16px,3vw,44px) 90px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,3.5vw,56px);align-items:stretch}
+.ob-foto{border-radius:12px;min-height:clamp(420px,86vh,940px);background:#20221e url('img/monitor-campo.webp') 50% 45%/cover;box-shadow:0 1px 2px #e0e0e0,0 12px 26px #e4e4e4}
+.ob-dir{display:flex;flex-direction:column;padding-top:4px}
+.ob-rot{font:500 13px var(--g);text-transform:uppercase;letter-spacing:.04em;color:#4f544d}
+.ob-logo{height:26px;width:auto;align-self:flex-start;object-fit:contain}
+h1{margin-top:12px;font:400 clamp(56px,6.4vw,112px)/.95 var(--t);color:#0a0a07;letter-spacing:-.02em}
+h1 em{font-style:italic}
+.ob-txt{margin-top:18px;max-width:46ch;font:300 clamp(17px,1.35vw,21px)/1.6 var(--g);color:#4f544d}
+.ob-txt b{font-weight:500;color:var(--oliva)}
+.ob-tab{margin-top:26px;border-top:1px solid #e5e5e5}
+.ob-tab div{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid #e5e5e5;font:500 14px var(--g);text-transform:uppercase;letter-spacing:.03em}
+.ob-tab dt{color:#676d64}.ob-tab dd{margin:0;color:#0a0a07;text-align:right}
+.ob-tab a:hover{color:var(--oliva)}
+.ob-bt{margin-top:28px;height:56px;border-radius:999px;background:#0a0a07;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;font:500 16px var(--g)}
+.ob-bt:hover{background:#3a3e39}.ob-bt svg{width:18px;height:18px}
+.ob-sec{margin-top:12px;height:50px;border-radius:999px;border:1px solid #d4d4d4;background:#fff;display:flex;align-items:center;justify-content:center;font:500 15px var(--g);color:#0a0a07}
+.ob-pills{margin-top:auto;padding-top:24px;border-top:1px solid #e5e5e5;display:flex;flex-wrap:wrap;gap:8px}
+.ob-pills span{height:30px;padding:0 14px;border-radius:999px;border:1px solid #d4d4d4;background:#fff;display:inline-flex;align-items:center;font:500 12px var(--g);text-transform:uppercase;letter-spacing:.03em}
+.ob-pills span::before{content:"+";margin-right:6px;color:var(--dourado)}
+.ob-vers{margin-top:30px;padding:4px 0 4px 22px;border-left:2px solid var(--dourado);margin-bottom:28px}
+.ob-vers p{font:italic 400 clamp(19px,1.55vw,25px)/1.45 var(--t);color:#0a0a07;max-width:40ch}
+.ob-vers cite{display:block;margin-top:12px;font:500 12px var(--g);font-style:normal;text-transform:uppercase;letter-spacing:.06em;color:var(--oliva)}
+/* entrada: os blocos sobem suavemente, um depois do outro */
+.sobe{animation:obSobe .9s cubic-bezier(.2,.7,.2,1) backwards}
+@keyframes obSobe{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.sobe{animation:none;opacity:1;transform:none}}
+.anterior{position:fixed;right:22px;bottom:22px;z-index:65;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#0a0a07;color:#fff;box-shadow:0 10px 30px -12px rgba(0,0,0,.5);transition:transform .2s}
+.anterior:hover{transform:translateX(-4px)}.anterior svg{width:18px;height:18px}
+@media (max-width:860px){.ob{grid-template-columns:1fr}.ob-foto{min-height:62vh}}
+/* passagem de página: a nova sobe de baixo e cobre a anterior */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:none;z-index:0}
+::view-transition-new(root){animation:sobe .9s cubic-bezier(.77,0,.18,1) both;z-index:1;box-shadow:0 -30px 80px -20px rgba(0,0,0,.25)}
+@keyframes sobe{from{transform:translateY(100%)}to{transform:translateY(0)}}
+
+/* ===== padrão da plataforma Wheff (core/design.js, tema claro): raios 8/10/12 e pílula, bordas #e5e5e5,
+   texto #3a3e39, fundo #f6f8f4, sombra suave, destaque lima → dourado, bordas vivas em degradê ===== */
+:root{--p-bg:#f6f8f4;--p-card:#ffffff;--p-borda:#e5e5e5;--p-borda2:#d4d4d4;--p-capsula-borda:#dfe2da;--p-txt1:#3a3e39;--p-txt2:#4f544d;--p-txt3:#676d64;
+  --p-r:8px;--p-rl:10px;--p-rxl:12px;--p-sombra:0 1px 2px #e0e0e0,0 12px 26px #e4e4e4;--p-sombra-alta:0 2px 4px #d6d6d6,0 24px 44px #d6d6d6;--p-preto:#0a0a07}
+.p-cartao{background:var(--p-card)!important;border:1px solid var(--p-borda)!important;box-shadow:var(--p-sombra)!important}
+.foto{border-radius:var(--p-r)!important}
+.txt{color:var(--p-txt2)!important}
+h1{color:var(--p-preto)}
+</style>
+</head>
+<body>
+<main class="ob">
+  <div class="ob-foto sobe" style="animation-delay:.05s" role="img" aria-label="Monitor com o site da Wheff num campo de flores"></div>
+  <section class="ob-dir">
+    <img class="ob-logo sobe" style="animation-delay:.2s" src="img/wordmark.png" alt="Wheff">
+    <h1 class="sobe" style="animation-delay:.28s">Obrigada<em>.</em></h1>
+    <p class="ob-txt sobe" style="animation-delay:.36s">Agora que você conhece um pouco mais sobre a Wheff, entre em contato conosco para saber mais sobre a possibilidade de, <b>juntos, construirmos o seu legado</b>.</p>
+    <dl class="ob-tab">
+      <div class="sobe" style="animation-delay:.44s"><dt>Propósito</dt><dd>Inesquecível</dd></div>
+      <div class="sobe" style="animation-delay:.52s"><dt>Resultados</dt><dd>Inevitáveis</dd></div>
+      <div class="sobe" style="animation-delay:.6s"><dt>WhatsApp</dt><dd><a href="https://wa.me/5571988364088" target="_blank" rel="noopener">+55 71 98836-4088</a></dd></div>
+      <div class="sobe" style="animation-delay:.68s"><dt>Próximo passo</dt><dd>Construir o seu legado</dd></div>
+    </dl>
+    <a class="ob-bt sobe" style="animation-delay:.76s" href="https://wa.me/5571988364088" target="_blank" rel="noopener">Fale com a Wheff <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="ob-sec sobe" style="animation-delay:.84s" href="inicio.html">Voltar ao início</a>
+    <blockquote class="ob-vers sobe" style="animation-delay:.9s"><p>“Assim brilhe também a vossa luz diante dos homens, para que vejam as vossas boas obras e glorifiquem a vosso Pai que está nos céus.”</p><cite>Mateus 5:16 · ARA</cite></blockquote>
+    <div class="ob-pills sobe" style="animation-delay:.98s"><span>Branding</span><span>Posicionamento</span><span>Lançamentos digitais</span><span>Coprodução</span></div>
+  </section>
+</main>
+<a class="anterior" href="pagina-3.html" aria-label="Página anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+</body>
+</html>
