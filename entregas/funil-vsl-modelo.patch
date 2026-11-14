@@ -1,0 +1,256 @@
+From 33f07b580e289fd6b5c8e0501ff1a844889aec88 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sat, 14 Nov 2026 02:02:48 +0000
+Subject: [PATCH] =?UTF-8?q?Funis:=20modelo=20Funil=2005=20=C2=B7=20VSL=20(?=
+ =?UTF-8?q?Funil=20Triplo)=20com=20etapas,=20objetivos=20e=20estrat=C3=A9g?=
+ =?UTF-8?q?ias?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Novo modelo na aba Modelos do Construtor de Funis, montado a partir do
+Guia do Funil de VSL: o Funil A (Base, perpétuo com VSL), o Funil B
+(Esteira, ascensão) e o Funil C (Colheita, lançamento), em 11 etapas.
+Cada etapa traz objetivo, alavancas, estratégias ligadas e metas.
+
+As 13 estratégias entram no Banco de Estratégias, na categoria nova
+Funil de VSL. A Preparação Geral não é acrescentada a este modelo,
+porque a oferta e a pesquisa já ocupam esse lugar.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01PnMo1VAJ9s87px9dC9rLHi
+---
+ app_wheff_v33.html | 196 ++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 195 insertions(+), 1 deletion(-)
+
+diff --git a/app_wheff_v33.html b/app_wheff_v33.html
+index 70bcfa8..e093883 100644
+--- a/app_wheff_v33.html
++++ b/app_wheff_v33.html
+@@ -6986,6 +6986,183 @@ function lreFunnelTemplates() {
+   ];
+ }
+ 
++// ════════════════════════════════════════════════════════════════
++// ██████  FUNIL 05 · VSL — FUNIL TRIPLO (Base, Esteira e Colheita)  ██████
++// ════════════════════════════════════════════════════════════════
++// Modelo montado a partir do "Guia do Funil de VSL" (Plugu&Play × Hubla),
++// enviado em 14/11/2026. Os textos são da Wheff, escritos a partir do guia:
++// o material original não pode ser reproduzido.
++//
++// É um funil feito de três funis. O Funil A (Base) é o perpétuo com VSL, que
++// vende todo dia para tráfego frio; o Funil B (Esteira) leva quem comprou
++// para ofertas maiores; o Funil C (Colheita) é o lançamento para essa base.
++// A letra no começo do nome de cada etapa diz de qual dos três ela é.
++const VSL_FONTE = 'Fonte: Guia do Funil de VSL (Plugu&Play × Hubla), enviado em 14/11/2026.';
++
++function estrategiasFunilVSL() {
++  const e = (id, title, objective, steps, whenUse, tags) => ({ id, title, category:'funil-vsl',
++    subcategory:'Funil de VSL', objective, description: steps.join('\n'), steps, whenUse,
++    tags:['vsl','perpétuo','direct response'].concat(tags || []), notes: VSL_FONTE });
++  return [
++    e('vsl_oferta_80_20', 'A oferta é 80% do perpétuo', 'Construir uma oferta que faça o cliente pensar "seria burrice não comprar".', [
++      'Começar pela oferta, não pelo roteiro.',
++      'Promessa simples e atingível: o cliente precisa achar que consegue.',
++      'Se a oferta não convence, nenhuma copy, edição ou verba de tráfego salva o funil.',
++      'Quando a conversão cair, voltar à oferta antes de mexer no vídeo.'
++    ], 'Antes de escrever qualquer roteiro, e sempre que a conversão cair.', ['oferta']),
++    e('vsl_dor_latente', 'Encontre a dor latente', 'Achar a dor que tira o sono do cliente e que ninguém está resolvendo direito.', [
++      'Separar a dor óbvia (a que todo mundo aborda) da dor latente.',
++      'Exemplo: dentistas. Óbvia: "ser um dentista melhor". Latente: "lotar a agenda sem depender de indicação".',
++      'Pesquisar em conversas reais com clientes, avaliações negativas de concorrentes, comunidades, comentários de anúncios e pesquisa aberta com a própria base.'
++    ], 'Fase de Mergulho, cerca de 40% do tempo de criação.', ['pesquisa','dor']),
++    e('vsl_banco_frases', 'Banco de frases do avatar', 'Escrever a VSL com as palavras do público, não com as do copywriter.', [
++      'Copiar frases inteiras, exatamente como o público escreve.',
++      'Se o público diz "quero um respiro no fim do mês", a copy fala "respiro", e não "estabilidade financeira".',
++      'Montar também o banco de provas: depoimentos, resultados e dados.'
++    ], 'Durante a pesquisa e na hora de escrever.', ['pesquisa','copy']),
++    e('vsl_mecanismo_problema', 'Mecanismo do problema: o inimigo comum', 'Explicar por que nada funcionou até hoje e tirar a culpa do cliente.', [
++      '1. Validar a dor: "você já tentou de tudo e os resultados não vieram".',
++      '2. Apresentar o inimigo: a culpa é de um método ultrapassado, de uma informação escondida ou de um modelo que prendeu a pessoa.',
++      '3. Criar esperança: existe um caminho diferente, descoberto por quem já chegou lá.',
++      'Batizar o inimigo com nome próprio ("ciclo", "armadilha", "efeito"): o que tem nome pode ser combatido.',
++      'A culpa vai sempre para fora, nunca para algo que inclua o seu próprio produto.'
++    ], 'Fase de Arquitetura, antes do roteiro.', ['mecanismo','copy']),
++    e('vsl_mecanismo_solucao', 'Mecanismo da solução: a chave que converte', 'Explicar por que agora vai funcionar.', [
++      'Disruptivo: vai contra o senso comum e contra o que o cliente já tentou.',
++      'Simples e atingível: o cliente pensa "eu consigo".',
++      'Com autoridade: apoiado em alguém ou algo que o mercado respeita.',
++      'Nomeado e único: um nome próprio ("Protocolo", "Sistema", "Método").',
++      'Teste da cópia: um concorrente consegue prometer o mesmo amanhã? Se sim, falta o que só você tem.',
++      'Teste da remoção: sem o mecanismo, a promessa continua de pé? Se continua, ele é só enfeite.',
++      'Teste da criança de 12 anos: depois de ouvir uma vez, ela explica para outra pessoa? Se não, está complexo demais.'
++    ], 'Fase de Arquitetura, junto com a Big Idea.', ['mecanismo','big idea']),
++    e('vsl_striptease', 'Roteiro em camadas (VSL Striptease)', 'Prender a atenção da abertura até a oferta, revelando uma camada por vez.', [
++      '01 Lead: 60 a 90 segundos que prendem ou perdem; abre uma curiosidade que só o resto fecha.',
++      '02 Mecanismo do problema: o inimigo comum, com nome; a culpa sai do cliente.',
++      '03 Revelação e validação: a oportunidade, confirmada por quem não ganha nada com isso.',
++      '04 Diferenciação: desmonta o "já vi isso" antes que ele apareça.',
++      '05 A descoberta: a solução existe, com nome e uma prova rápida, sem explicar ainda.',
++      '06 História: "ele era igual a mim e conseguiu".',
++      '07 Engrenagens: como funciona, em pilares numerados.',
++      '08 Prova e demonstração: depoimentos em camadas (espelho, extremo, improvável).',
++      '09 Oferta e garantia: empilhamento, descida de preço, garantia e escassez com motivo real.',
++      '10 Fechamento e perguntas: presentes, fechamento direto e as perguntas reais do público.',
++      'Regras: nunca revelar e explicar na mesma frase; a tensão vem antes da revelação; alternar dor e esperança.'
++    ], 'Fase de Planta, cerca de 15% do tempo de criação.', ['roteiro','vsl']),
++    e('vsl_frase_ponte', 'Várias aberturas, uma frase-ponte', 'Trocar só a abertura quando o anúncio cansar, sem regravar a VSL.', [
++      'Gravar várias aberturas (leads) que terminam todas na mesma frase-ponte.',
++      'Quando a retenção do 1º minuto cair, trocar só a abertura.',
++      'Escrever na ordem certa e fazer três passes de edição.',
++      'VSL vertical, porque o tráfego é no celular.'
++    ], 'Fase de Apresentação e sempre que a retenção do 1º minuto cair.', ['vsl','teste']),
++    e('vsl_criativos_filtro', 'Criativos que filtram o público', 'Comprar atenção do público certo e entregá-lo direto no play.', [
++      'Rodar em Meta, Google e YouTube.',
++      'Criativos disruptivos, que filtram quem não é o público.',
++      'CPC subindo aos poucos com a conversão estável: o anúncio cansou, grave novas aberturas.',
++      'Tudo caindo junto: o público esgotou, expanda a audiência.'
++    ], 'Funil A, sempre ativo.', ['tráfego','criativo']),
++    e('vsl_checkout_limpo', 'Checkout limpo no mid-ticket', 'Não perder a venda na hora de pagar.', [
++      'No mid-ticket (R$ 197 a 497), checkout sem order bumps nem distrações.',
++      'Cartão como forma principal: 70 a 80% das compras, o que libera o upsell em 1 clique.'
++    ], 'Funil A, em toda oferta de entrada.', ['checkout']),
++    e('vsl_upsell_pronto', 'Upsell em 1 clique, de entrega pronta', 'Fazer o upsell pagar a escala: o front paga o tráfego.', [
++      'Oferecer logo depois da compra, no pico de confiança, aprovado em 1 clique sem redigitar o cartão.',
++      'Entrega pronta ("tá pronto, é só usar"): IA, templates, ferramentas, serviços.',
++      'A diferença para o produto principal é de velocidade, tamanho ou comodidade, nunca de funcionamento.',
++      '"Sem isso demora mais" vende; "sem isso não funciona" gera reembolso.',
++      'Meta mínima: 20% de conversão (ideal 25% ou mais), como um front de R$ 297 com upsell de R$ 597.'
++    ], 'Funil A, logo após o checkout.', ['upsell','ticket médio']),
++    e('vsl_ascensao', 'Ascensão por e-mail e WhatsApp', 'Levar quem já comprou para ofertas de ticket maior, sem custo novo de aquisição.', [
++      'Nutrir a base de compradores por e-mail e WhatsApp.',
++      'O cliente sobe degrau por degrau, para ofertas de ticket maior.',
++      'A base nutrida é o combustível dos lançamentos.'
++    ], 'Funil B, com quem já comprou no Funil A.', ['ascensão','e-mail','whatsapp']),
++    e('vsl_colheita', 'Lançamento para a base aquecida', 'Colher com um evento para quem já comprou de você.', [
++      'A cada cerca de 45 dias, um lançamento para a base aquecida.',
++      'É o jogo do lançamento, jogado com uma base que já comprou.',
++      'O caixa do lançamento volta para o tráfego, o tráfego alimenta a base e a base garante o próximo lançamento.'
++    ], 'Funil C, a cada ciclo de cerca de 45 dias.', ['lançamento']),
++    e('vsl_diagnostico', 'Conserte o número, não o funil', 'Achar o gargalo (a métrica mais distante da referência) e mexer só nela.', [
++      'Os 9 números em corrente: CPM, CTR, CPC, Connect rate, Play rate, Retenção no 1º minuto, Retenção até a oferta, Conversão e Ticket médio.',
++      'Investimento ÷ CPM × 1.000 × CTR × Connect × Play × Retenção × Conversão × Ticket = faturamento.',
++      'CPC subiu: problema no criativo ou no leilão.',
++      'Play rate caiu: problema na página (headline, botão de play, thumb, expectativa do anúncio), não no vídeo.',
++      'Retenção do 1º minuto caiu: problema na abertura; troque só ela.',
++      'Retenção até a oferta caiu: problema no meio do vídeo (mecanismo, provas, trilha emocional).',
++      'Conversão caiu: problema na oferta ou no checkout; volte à oferta antes de mexer no vídeo.',
++      'Ticket médio caiu: problema na esteira; upsell abaixo de 20% é sinal vermelho.',
++      'Referências: perder no máximo 40% do público no 1º minuto; upsell de 20% ou mais; ticket médio sempre acima do custo de aquisição.'
++    ], 'Todo dia, antes de mexer em qualquer peça do funil.', ['métricas','diagnóstico'])
++  ];
++}
++
++function funilVSLTemplate() {
++  const etapa = (name, quando, desc, obj, passos, estrategias, kpis) => {
++    const st = newStage(name);
++    st.timeEstimate = quando;
++    st.description = `${quando} — ${desc}`;
++    st.objective = obj;
++    st.checklist = passos.map(t => ({ id: pid(), text: t, done: false }));
++    st.strategies = estrategias;
++    st.kpis = (kpis || []).map(([label, target]) => ({ label, target, actual: '', prazo: '' }));
++    return st;
++  };
++  const f = newFunnel('Funil 05 · VSL — Funil Triplo (Base, Esteira e Colheita)', true);
++  f.tags = ['VSL', 'Perpétuo'];
++  f.description = 'Três funis rodando juntos, cada um abastecendo o próximo. ' +
++    'Funil A · Base: o perpétuo com VSL, vendendo todo dia para tráfego frio; gera caixa, paga o tráfego e constrói a base de compradores. ' +
++    'Funil B · Esteira: e-mail e WhatsApp levando quem comprou para ofertas maiores, sem custo novo de aquisição. ' +
++    'Funil C · Colheita: a cada cerca de 45 dias, um lançamento para a base aquecida. ' +
++    'O caixa do lançamento volta para o tráfego e o ciclo se fecha. ' + VSL_FONTE;
++  f.stages = [
++    etapa('A · 01 · Oferta', 'Antes de ir ao ar', 'Funil A · Base. A oferta é 80% do resultado do perpétuo: se ela não brilha os olhos do cliente, nada salva o funil.',
++      'Chegar a uma oferta simples e atingível, em que o cliente pense "seria burrice não comprar"',
++      ['Escrever a promessa em uma frase simples e atingível', 'Definir o ticket da oferta de entrada (mid-ticket, R$ 197 a 497)', 'Montar a oferta: produto, bônus e garantia', 'Conferir: a oferta faz o cliente pensar "seria burrice não comprar"?'],
++      ['vsl_oferta_80_20']),
++    etapa('A · 02 · Mergulho (pesquisa)', 'Antes de ir ao ar · ~40% do tempo de criação', 'Funil A · Base. Copy é pesquisa: a VSL sai do banco de frases do público, não da cabeça de quem escreve.',
++      'Encontrar a dor latente: a que tira o sono do cliente e que ninguém está resolvendo direito',
++      ['Separar a dor óbvia da dor latente', 'Ler conversas reais com clientes', 'Ler avaliações negativas de concorrentes', 'Ler comunidades e comentários de anúncios', 'Fazer uma pesquisa aberta com a própria base', 'Montar o banco de frases do avatar, com as palavras exatas do público', 'Montar o banco de provas: depoimentos, resultados e dados'],
++      ['vsl_dor_latente', 'vsl_banco_frases']),
++    etapa('A · 03 · Arquitetura (mecanismos)', 'Antes de ir ao ar · ~20% do tempo de criação', 'Funil A · Base. Os mecanismos próprios: o inimigo com nome, a chave da solução e a Big Idea.',
++      'Explicar por que nada funcionou até hoje e por que agora vai funcionar',
++      ['Mecanismo do problema: validar a dor', 'Apresentar o inimigo comum e tirar a culpa do cliente', 'Batizar o inimigo com um nome próprio', 'Criar esperança: existe um caminho diferente', 'Mecanismo da solução: disruptivo, simples, com autoridade e com nome único', 'Passar a solução nos 3 testes: cópia, remoção e criança de 12 anos', 'Definir a Big Idea'],
++      ['vsl_mecanismo_problema', 'vsl_mecanismo_solucao']),
++    etapa('A · 04 · Planta (roteiro)', 'Antes de ir ao ar · ~15% do tempo de criação', 'Funil A · Base. O roteiro em camadas: cada bloco abre uma curiosidade que só o seguinte fecha, e a última camada cai na oferta.',
++      'Desenhar o roteiro da VSL para prender a atenção da abertura até a oferta',
++      ['01 Lead (60 a 90 segundos)', '02 Mecanismo do problema', '03 Revelação e validação', '04 Diferenciação', '05 A descoberta', '06 História', '07 Engrenagens', '08 Prova e demonstração', '09 Oferta e garantia', '10 Fechamento e perguntas', 'Cada prova na posição certa e a trilha emocional alternando dor e esperança'],
++      ['vsl_striptease']),
++    etapa('A · 05 · Apresentação (VSL pronta)', 'Antes de ir ao ar · ~25% do tempo de criação', 'Funil A · Base. A escrita na ordem certa, a gravação e a edição. Travou aqui? O problema está na etapa anterior.',
++      'Ter a VSL gravada, editada e pronta para testar',
++      ['Escrever o roteiro na ordem dos blocos', 'Fazer três passes de edição', 'Gravar várias aberturas que terminam na mesma frase-ponte', 'Gravar e editar a VSL na vertical', 'Página com headline, botão de play e thumb alinhados ao anúncio'],
++      ['vsl_frase_ponte']),
++    etapa('A · 06 · Tráfego pago', 'Sempre ativo · 24/7', 'Funil A · Base. Primeiro nasce a VSL, depois se compra atenção para ela.',
++      'Levar o público certo até o play da VSL',
++      ['Rodar campanhas em Meta, Google e YouTube', 'Produzir criativos disruptivos que filtram o público', 'Anúncio cansou (CPC sobe aos poucos, conversão estável): gravar novas aberturas', 'Tudo caiu junto (público esgotou): expandir a audiência'],
++      ['vsl_criativos_filtro'], [['CTR', ''], ['CPC', ''], ['Connect rate', ''], ['Play rate', '']]),
++    etapa('A · 07 · Checkout limpo', 'Sempre ativo', 'Funil A · Base. No mid-ticket, o checkout sem distração converte mais e prepara o upsell.',
++      'Não perder a venda na hora de pagar',
++      ['Tirar order bumps e distrações do checkout', 'Deixar o cartão como forma principal de pagamento', 'Conferir o preço e a garantia da oferta no checkout'],
++      ['vsl_checkout_limpo'], [['Conversão', '']]),
++    etapa('A · 08 · Upsell em 1 clique', 'Sempre ativo · logo após a compra', 'Funil A · Base. O front paga o tráfego; o upsell traz a margem que paga a escala.',
++      'Aumentar o ticket médio com uma segunda oferta aprovada em 1 clique',
++      ['Oferecer o upsell logo após a compra, no pico de confiança', 'Aprovação em 1 clique, sem redigitar o cartão', 'Oferta de entrega pronta: IA, templates, ferramentas ou serviços', 'Diferença de velocidade, tamanho ou comodidade, nunca de funcionamento'],
++      ['vsl_upsell_pronto'], [['Conversão do upsell', '20% ou mais (ideal 25%+)'], ['Ticket médio', 'Acima do custo de aquisição']]),
++    etapa('B · 09 · Ascensão', 'Sempre ativo · após cada compra', 'Funil B · Esteira. E-mail e WhatsApp nutrindo a base de clientes: o combustível dos lançamentos.',
++      'Levar quem já comprou para ofertas de ticket maior, sem custo novo de aquisição',
++      ['Nutrir a base de compradores por e-mail', 'Nutrir a base de compradores pelo WhatsApp', 'Oferecer o próximo degrau, de ticket maior', 'Aquecer a base para o próximo lançamento'],
++      ['vsl_ascensao']),
++    etapa('C · 10 · Lançamento (colheita)', 'A cada ~45 dias', 'Funil C · Colheita. O jogo do lançamento, jogado com uma base que já comprou de você.',
++      'Colher com um evento para a base aquecida',
++      ['Marcar o lançamento a cada cerca de 45 dias', 'Convidar a base de compradores aquecida na ascensão', 'Levar o caixa do lançamento de volta para o tráfego do Funil A'],
++      ['vsl_colheita']),
++    etapa('Painel · Os 9 números', 'Sempre ativo · todo dia', 'Os três funis. O funil é uma multiplicação: se um número trava, tudo trava. Opere na planilha, não no achismo.',
++      'Achar o gargalo (a métrica mais distante da referência) e consertar só ela',
++      ['Acompanhar CPM, CTR, CPC, Connect rate e Play rate', 'Acompanhar Retenção no 1º minuto e Retenção até a oferta', 'Acompanhar Conversão e Ticket médio', 'Achar a métrica mais distante da referência (o gargalo)', 'Atacar só o gargalo, sem mexer no resto'],
++      ['vsl_diagnostico'], [['Perda no 1º minuto', 'No máximo 40%'], ['Conversão do upsell', '20% ou mais'], ['Ticket médio', 'Acima do custo de aquisição']])
++  ];
++  return f;
++}
++
+ // ── inicialização / migração ──
+ // ════════════════════════════════════════════════════════════════
+ // Seed e migracoes do PDB.
+@@ -7046,6 +7223,20 @@ function migrarPDB() {
+       lreChanged = true;
+     }
+   });
++  // Funil 05 · VSL (Funil Triplo): categoria, estratégias e o modelo.
++  // Aditivo como o resto: só entra o que ainda não estiver cadastrado.
++  if (!getStratCats().some(c => c.id === 'funil-vsl')) {
++    PDB.strategyCats.push({ id:'funil-vsl', label:'Funil de VSL', icon:ico('video',15), color:'var(--accent)',
++      desc:'Oferta, pesquisa, mecanismos, roteiro, tráfego, checkout, upsell, ascensão e diagnóstico do funil perpétuo com VSL.' });
++    lreChanged = true;
++  }
++  estrategiasFunilVSL().forEach(t => {
++    if (!PDB.strategies.some(x => x.id === t.id)) { PDB.strategies.push(Object.assign(newStrategy(), t)); lreChanged = true; }
++  });
++  if (!PDB.funnelTemplates.some(f => f.name.startsWith('Funil 05 · VSL'))) {
++    PDB.funnelTemplates.push(funilVSLTemplate());
++    lreChanged = true;
++  }
+   const lreFunnelNames = ['Funil 01 · Inicial', 'Funil 02 · Avançado', 'Funil 03 · Hard', 'Funil 04 · Perpétuo'];
+   if (!PDB.funnelTemplates.some(f => lreFunnelNames.some(n => f.name.startsWith(n)))) {
+     PDB.funnelTemplates = PDB.funnelTemplates.concat(lreFunnelTemplates());
+@@ -7130,6 +7321,9 @@ function migrarPDB() {
+   const PREP_OBJ  = 'Chegar no dia 1 com o produto validado pelo próprio público';
+ 
+   [...PDB.funnelTemplates, ...PDB.funnels].forEach(f => {
++    // O funil de VSL começa pela oferta e pela pesquisa (etapas A · 01 e
++    // A · 02), que já fazem o papel da Preparação Geral.
++    if ((f.tags || []).includes('VSL')) return;
+     const antiga = f.stages.find(s => PREP_NOMES_ANTIGOS.includes(s.name));
+     if (antiga) {
+       // Renomeia e reenquadra, mas NÃO mexe no checklist: o que você marcou
+@@ -9446,7 +9640,7 @@ function renderFunnelsModule() {
+     </div>
+     <div class="mv-tabs">
+       <div class="mv-tab ${funnelsTab==='meus'?'active':''}" onclick="setFunnelsTab('meus')">Meus funis</div>
+-      <div class="mv-tab ${funnelsTab==='modelos'?'active':''}" onclick="setFunnelsTab('modelos')">Modelos (os 4 funis LRE + os seus)</div>
++      <div class="mv-tab ${funnelsTab==='modelos'?'active':''}" onclick="setFunnelsTab('modelos')">Modelos (os 4 funis LRE, o funil de VSL e os seus)</div>
+       <div class="mv-tab ${funnelsTab==='estrategia'?'active':''}" onclick="setFunnelsTab('estrategia')">📋 Visualização Geral de Estratégia</div>
+     </div>
+     <div class="mv-body" id="funnels-body"></div>
+-- 
+2.43.0
+
